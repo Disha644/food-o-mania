@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import Spinner from '../../components/Spinner/Spinner';
-import Recipe from '../../components/Recipe/Recipe'
+import FoodCard from '../../components/FoodCard/FoodCard'
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input'
 import axios from '../../spoonacular-data-axios';
 import classes from './RecipeList.css';
 
-const API_KEY = '6f84908876b94fdebedbdb4dff8fedad';
+const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
 const RecipeList = (props) => {
 
     const [recipes, setRecipes] = useState([]);
@@ -58,7 +58,7 @@ const RecipeList = (props) => {
         output = <Spinner />
     }
     if (recipes.length > 0) {
-        output = recipes.map(r => <Recipe key={r.id} recipe={r} />);
+        output = recipes.map(r => <FoodCard key={r.id} recipe={r} />);
     }
 
     return (

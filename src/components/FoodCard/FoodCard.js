@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './Recipe.css';
+import classes from './FoodCard.css';
 
-const Recipe = ({ recipe }) => {
+const FoodCard = ({ recipe }) => {
 
     const imageUrl = 'https://spoonacular.com/recipeImages/' + recipe.id + '-556x370.' + recipe.imageType;
 
@@ -13,12 +13,13 @@ const Recipe = ({ recipe }) => {
     }
 
     return (
-        <div className={classes.Recipe}>
+        <div className={classes.FoodCard}>
             <img src={imageUrl} alt="recipe_image" />
-            <p style={{ color: 'rgb(92, 88, 88)' }}>{recipe.title}</p>
+            <p>{recipe.title}</p>
+            <p>Prepration time: {recipe.readyInMinutes} mins</p>
             { link}
         </div >
     );
 }
 
-export default Recipe;
+export default FoodCard;

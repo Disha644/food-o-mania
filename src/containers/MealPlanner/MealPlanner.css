@@ -11,11 +11,21 @@
 }
 
 .MealPlanner p {
-  margin: 5px auto;
+  margin: 2px auto;
+}
+
+.MealPlanner ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.MealPlanner li {
+  margin: auto 15px;
 }
 
 .MealPlanner h5 {
-  margin: 18px auto;
+  margin: 12px auto 10px auto;
 }
 
 .List {
