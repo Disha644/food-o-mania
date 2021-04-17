@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import Spinner from '../../components/Spinner/Spinner';
 import Recipe from '../../components/Recipe/Recipe'
+import Button from '../../components/Button/Button';
+import Input from '../../components/Input/Input'
 import axios from '../../spoonacular-data-axios';
 import classes from './RecipeList.css';
 
@@ -61,8 +63,10 @@ const RecipeList = (props) => {
 
     return (
         <div className={classes.RecipeList}>
-            <input type="text" placeholder="Search your favorite recipes" onChange={valueChangeHandler} />
-            <button onClick={() => searchHandler(searchValue)}>Search</button>
+            <h5>Welcome to Food-o-mania!!</h5>
+            <p>Favourite place for all the foodies</p>
+            <Input type="text" placeholder="Search your favourite recipes" changed={valueChangeHandler} />
+            <Button name="Search" clicked={() => searchHandler(searchValue)} />
             <div className={classes.List}>
                 {output}
             </div>

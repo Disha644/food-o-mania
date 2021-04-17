@@ -1,7 +1,8 @@
 .NavigationBar {
-  padding: 20px 20px;
+  padding: 15px 20px 15px;
   box-sizing: border-box;
-  height: 60px;
+  height: 80px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -10,4 +11,14 @@
   color: white;
   text-decoration: none;
   margin: 0px 10px;
+}
+
+.NavigationBar a:hover,
+.NavigationBar a:active,
+.NavigationBar a.active {
+  color: #445d77;
+}
+
+.Logo {
+  height: 100%;
 }

@@ -7,10 +7,12 @@ import classes from './NavigationBar.css';
 const NavigationBar = (props) => {
     return (
         <div className={classes.NavigationBar}>
-            <Logo />
+            <div className={classes.Logo}>
+                <Logo />
+            </div>
             <div>
-                <NavLink to="/">Search Recipes</NavLink>
-                <NavLink to="/meal-planner">Plan Meals</NavLink>
+                <NavLink to="/" exact activeClassName={classes.active} >Search Recipes</NavLink>
+                <NavLink to="/meal-planner" activeClassName={classes.active}>Meal Planner</NavLink>
             </div>
         </div>
     );

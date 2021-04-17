@@ -6,7 +6,7 @@ import Image from '../../assets/Logo.png';
 const Logo = () => {
     return (
         <div className={classes.Logo}>
-            <img src={Image} />
+            <img src={Image} alt="Our_Logo" />
         </div>
     )
 }

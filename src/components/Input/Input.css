@@ -1,0 +1,10 @@
+input {
+  margin: 5px auto;
+  height: 40px;
+  outline: none;
+  border: 1px solid #cccccc;
+  background-color: white;
+  font: inherit;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}

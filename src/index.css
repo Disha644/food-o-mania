@@ -5,4 +5,6 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   background-image: linear-gradient(to bottom, #fc6f56, #ff416c);
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }

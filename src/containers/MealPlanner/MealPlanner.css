@@ -1,21 +1,21 @@
-.RecipeList {
-  display: flex;
-  flex-direction: column;
+.MealPlanner {
   color: whitesmoke;
   font: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
-.RecipeList input {
-  width: 60%;
-  max-width: 350px;
+.MealPlanner input {
+  width: 62%;
+  max-width: 250px;
 }
 
-.RecipeList h5 {
+.MealPlanner p {
   margin: 5px auto;
 }
 
-.RecipeList p {
-  margin: 10px auto;
+.MealPlanner h5 {
+  margin: 18px auto;
 }
 
 .List {
