@@ -6,6 +6,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard';
 import classes from './MealPlanner.css'
 import axios from '../../spoonacular-data-axios';
+import Background from '../../assets/mealPlannerBackground.png';
 
 const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
 const MealPlanner = (props) => {
@@ -59,7 +60,7 @@ const MealPlanner = (props) => {
 
     return (
         <div className={classes.MealPlanner}>
-            <div className={classes.Image}>
+            <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
                 <p>Are you still struggling with planning your daily meals??</p>
                 <h5>Food-o-mania is here now to make the it easy for you</h5>
                 <Input type="number" placeholder="Enter Calories for today's diet" changed={setCaloriesHandler} />

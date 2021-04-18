@@ -21,7 +21,6 @@
 }
 
 .Image {
-  background-image: url("../../assets/mealp.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 35%;

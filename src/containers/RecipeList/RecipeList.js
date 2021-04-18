@@ -5,6 +5,7 @@ import FoodCard from '../../components/FoodCard/FoodCard'
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input'
 import axios from '../../spoonacular-data-axios';
+import Background from '../../assets/searchRecipesBackground.jpg';
 import classes from './RecipeList.css';
 
 const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
@@ -63,7 +64,7 @@ const RecipeList = (props) => {
 
     return (
         <div className={classes.RecipeList}>
-            <div className={classes.Image}>
+            <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
                 <h5>Welcome to Food-o-mania!!</h5>
                 <p>Favourite place for all the foodies</p>
                 <Input type="text" placeholder="Search your favourite recipes" changed={valueChangeHandler} />
