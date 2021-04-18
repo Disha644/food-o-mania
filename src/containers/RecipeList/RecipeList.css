@@ -1,7 +1,7 @@
 .RecipeList {
   display: flex;
   flex-direction: column;
-  color: whitesmoke;
+  color: rgb(248, 248, 248);
   font: inherit;
 }
 
@@ -10,12 +10,12 @@
   max-width: 350px;
 }
 
-.RecipeList h5 {
-  margin: 5px auto;
-}
-
-.RecipeList p {
-  margin: 10px auto;
+.Image {
+  background-image: url("../../assets/bg7.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 35%;
+  height: 250px;
 }
 
 .List {
@@ -24,7 +24,7 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  margin: auto;
+  margin: 10px auto;
   justify-content: space-evenly;
   align-items: flex-start;
 }

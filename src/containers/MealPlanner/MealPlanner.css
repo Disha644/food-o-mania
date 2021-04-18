@@ -1,17 +1,13 @@
 .MealPlanner {
-  color: whitesmoke;
   font: inherit;
   display: flex;
   flex-direction: column;
+  color: rgb(248, 248, 248);
 }
 
 .MealPlanner input {
   width: 62%;
-  max-width: 250px;
-}
-
-.MealPlanner p {
-  margin: 2px auto;
+  max-width: 270px;
 }
 
 .MealPlanner ul {
@@ -24,8 +20,12 @@
   margin: auto 15px;
 }
 
-.MealPlanner h5 {
-  margin: 12px auto 10px auto;
+.Image {
+  background-image: url("../../assets/mealp.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 35%;
+  height: 250px;
 }
 
 .List {

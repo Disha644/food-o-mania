@@ -1,14 +1,17 @@
 .NavigationBar {
-  padding: 15px 20px 15px;
+  padding: 0 20px 0;
   box-sizing: border-box;
-  height: 80px;
+  height: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  align-items: center;
+  color: rgb(78, 77, 77);
 }
 
 .NavigationBar a {
-  color: white;
+  color: rgb(78, 77, 77);
   text-decoration: none;
   margin: 0px 10px;
 }
@@ -16,7 +19,7 @@
 .NavigationBar a:hover,
 .NavigationBar a:active,
 .NavigationBar a.active {
-  color: #445d77;
+  color: #5488c0;
 }
 
 .Logo {

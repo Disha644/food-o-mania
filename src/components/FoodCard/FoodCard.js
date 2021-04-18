@@ -9,14 +9,14 @@ const FoodCard = ({ recipe }) => {
     if (recipe.sourceUrl) {
         link = <a href={recipe.sourceUrl} target="_blank" rel="noreferrer">Click to view recipe</a>
     } else {
-        link = <p style={{ color: 'grey' }}>Our suggestions that you may like to try</p>
+        link = <p style={{ color: 'grey' }}>Our suggestions you may like to try</p>
     }
 
     return (
         <div className={classes.FoodCard}>
             <img src={imageUrl} alt="recipe_image" />
             <p>{recipe.title}</p>
-            <p>Prepration time: {recipe.readyInMinutes} mins</p>
+            {recipe.readyInMinutes ? <p>Prepration time: {recipe.readyInMinutes} mins</p> : null}
             { link}
         </div >
     );

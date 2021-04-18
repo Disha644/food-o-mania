@@ -1,11 +1,9 @@
 .FoodCard {
-  border: 1px solid rgb(224, 221, 221);
+  border: 1px solid white;
   height: 300px;
   width: 300px;
   margin: 10px;
   padding: 10px 5px 15px;
-  box-shadow: 0 2px 5px wheat;
-  border-radius: 5px;
   background-color: white;
   color: rgb(92, 88, 88);
 }
@@ -13,18 +11,18 @@
 .FoodCard img {
   height: 60%;
   width: 95%;
-  border-radius: 5px;
 }
 
 .FoodCard p {
   font: inherit;
+  margin: 8px;
 }
 
 .FoodCard a {
   text-decoration: none;
-  color: salmon;
+  color: rgb(247, 55, 55);
 }
 
 .FoodCard a:hover {
-  color: red;
+  color: salmon;
 }

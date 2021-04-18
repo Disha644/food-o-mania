@@ -34,19 +34,21 @@ const MealPlanner = (props) => {
             })
     }
 
-    let output = null;
+    let output = (
+        <p style={{ color: 'rgb(92, 88, 88)' }}>Get a personalised diet plan today with Food-o-Mania</p>
+    );
     if (loading) {
         output = <Spinner />
     }
     if (meals.length > 0) {
         output = (
-            <div>
+            <div style={{ color: 'rgb(92, 88, 88)' }}>
                 <h5>Nutrients content in your diet</h5>
                 <ul>
-                    <li>Fat: {nutrients.fat} g</li>
-                    <li>Protein: {nutrients.protein} g</li>
-                    <li>Calories: {nutrients.calories} cals</li>
-                    <li>Carbohydrates: {nutrients.carbohydrates} g</li>
+                    <li>Fat: {Math.floor(nutrients.fat)} g</li>
+                    <li>Protein: {Math.floor(nutrients.protein)} g</li>
+                    <li>Calories: {Math.floor(nutrients.calories)} cals</li>
+                    <li>Carbs: {Math.floor(nutrients.carbohydrates)} g</li>
                 </ul>
                 <div className={classes.List}>
                     {meals.map(meal => <FoodCard key={meal.id} recipe={meal} />)}
@@ -57,10 +59,12 @@ const MealPlanner = (props) => {
 
     return (
         <div className={classes.MealPlanner}>
-            <p>Are you still struggling with planning your daily meals??</p>
-            <h5>Food-o-mania is here now to make the it easy for you</h5>
-            <Input type="number" placeholder="Enter Calories for today's diet" changed={setCaloriesHandler} />
-            <Button name="Genrate Diet" clicked={() => generateDietHandler(calories)} />
+            <div className={classes.Image}>
+                <p>Are you still struggling with planning your daily meals??</p>
+                <h5>Food-o-mania is here now to make the it easy for you</h5>
+                <Input type="number" placeholder="Enter Calories for today's diet" changed={setCaloriesHandler} />
+                <Button name="Genrate Diet" clicked={() => generateDietHandler(calories)} />
+            </div>
             {output}
         </div>
     );

@@ -53,7 +53,7 @@ const RecipeList = (props) => {
             })
     }
 
-    let output = <p style={{ color: 'white' }}> No recipes found!!</p >
+    let output = <p style={{ color: 'rgb(92, 88, 88)' }}> No recipes found!!</p >
     if (loading) {
         output = <Spinner />
     }
@@ -63,10 +63,12 @@ const RecipeList = (props) => {
 
     return (
         <div className={classes.RecipeList}>
-            <h5>Welcome to Food-o-mania!!</h5>
-            <p>Favourite place for all the foodies</p>
-            <Input type="text" placeholder="Search your favourite recipes" changed={valueChangeHandler} />
-            <Button name="Search" clicked={() => searchHandler(searchValue)} />
+            <div className={classes.Image}>
+                <h5>Welcome to Food-o-mania!!</h5>
+                <p>Favourite place for all the foodies</p>
+                <Input type="text" placeholder="Search your favourite recipes" changed={valueChangeHandler} />
+                <Button name="Search" clicked={() => searchHandler(searchValue)} />
+            </div>
             <div className={classes.List}>
                 {output}
             </div>
