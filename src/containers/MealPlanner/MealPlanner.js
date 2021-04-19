@@ -15,14 +15,25 @@ const MealPlanner = (props) => {
     const [nutrients, setNutrients] = useState('');
     const [loading, setLoading] = useState(false);
     const [calories, setCalories] = useState(0);
+    const [dietType, setDietType] = useState('');
 
     const setCaloriesHandler = (event) => {
         setCalories(event.target.value);
     }
 
-    const generateDietHandler = (calories) => {
+    const setDietTypeHandler = (event) => {
+        setDietType(event.target.value);
+    }
+
+    const generateDietHandler = (calories, dietType) => {
+
         setLoading(true);
-        axios.get('/mealplanner/generate?timeFrame=day&targetCalories=' + calories + '&apiKey=' + API_KEY)
+        let url = '/mealplanner/generate?timeFrame=day&targetCalories=' + calories + '&apiKey=' + API_KEY;
+        if (dietType !== '') {
+            url = url + '&diet=' + dietType
+        }
+        console.log(url);
+        axios.get(url)
             .then((res) => {
                 setLoading(false);
                 //console.log(res);
@@ -61,13 +72,21 @@ const MealPlanner = (props) => {
     return (
         <div className={classes.MealPlanner}>
             <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
+
                 <p>Are you still struggling with planning your daily meals??</p>
                 <h5>Food-o-mania is here now to make the it easy for you</h5>
                 <Input type="number" placeholder="Enter Calories for today's diet" changed={setCaloriesHandler} />
-                <Button name="Genrate Diet" clicked={() => generateDietHandler(calories)} />
+
+                <select onChange={setDietTypeHandler} defaultValue="">
+                    <option value="">Non-Vegetarian</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                </select>
+
+                <Button name="Genrate Diet" clicked={() => generateDietHandler(calories, dietType)} />
             </div>
-            {output}
-        </div>
+            { output}
+        </div >
     );
 }
 

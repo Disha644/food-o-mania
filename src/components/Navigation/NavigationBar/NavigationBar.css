@@ -1,0 +1,29 @@
+.NavigationBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 20px 0;
+  box-sizing: border-box;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  align-items: center;
+  color: rgb(78, 77, 77);
+  z-index: 50;
+}
+
+.NavigationItems {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .NavigationBar {
+    justify-content: space-between;
+  }
+  .NavigationItems {
+    display: flex;
+    flex-direction: row;
+  }
+}

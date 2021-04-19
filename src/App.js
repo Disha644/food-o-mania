@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import classes from './App.css';
 
-import Layout from './components/Layout/Layout';
+import Layout from './containers/Layout/Layout';
 import RecipeList from './containers/RecipeList/RecipeList'
 import MealPlanner from './containers/MealPlanner/MealPlanner'
 

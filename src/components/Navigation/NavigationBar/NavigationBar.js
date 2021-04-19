@@ -1,15 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import NavigationItems from '../NavigationItems/NavigationItems'
 
+import Menu from '../Menu/Menu';
 import classes from './NavigationBar.css';
 
 const NavigationBar = (props) => {
     return (
         <div className={classes.NavigationBar}>
+            <Menu clicked={props.open} />
             <h3>Food-o-Mania</h3>
-            <div>
-                <NavLink to="/" exact activeClassName={classes.active} >Search Recipes</NavLink>
-                <NavLink to="/meal-planner" activeClassName={classes.active}>Meal Planner</NavLink>
+            <div className={classes.NavigationItems}>
+                <NavigationItems />
             </div>
         </div>
     );

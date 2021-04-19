@@ -1,0 +1,11 @@
+a {
+  color: rgb(78, 77, 77);
+  text-decoration: none;
+  margin: 0px 10px;
+}
+
+a:hover,
+a:active,
+a.active {
+  color: #5488c0;
+}
