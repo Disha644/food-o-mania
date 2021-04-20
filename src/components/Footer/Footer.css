@@ -1,6 +1,10 @@
+i {
+  margin: auto 8px;
+}
+
 .Footer {
   z-index: 50;
-  background-color: #e9eaeb;
+  background-color: #eeeeee;
   color: rgb(78, 77, 77);
   width: 100%;
   height: 220px;
