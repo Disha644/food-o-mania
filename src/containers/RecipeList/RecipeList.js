@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard'
 import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input'
+import Input from '../../components/Input/Input';
 import axios from '../../spoonacular-data-axios';
 import Background from '../../assets/searchRecipesBackground.jpg';
 import classes from './RecipeList.css';

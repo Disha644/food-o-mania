@@ -3,7 +3,7 @@ import './Button.css';
 
 const Button = (props) => {
     return (
-        <button onClick={props.clicked}>{props.name}</button>
+        <button onClick={props.clicked} disabled={props.disabled}>{props.name}</button>
     );
 }
 

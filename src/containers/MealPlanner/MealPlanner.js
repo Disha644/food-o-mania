@@ -15,10 +15,12 @@ const MealPlanner = (props) => {
     const [nutrients, setNutrients] = useState('');
     const [loading, setLoading] = useState(false);
     const [calories, setCalories] = useState(0);
+    const [touched, setTouched] = useState(false);
     const [dietType, setDietType] = useState('');
 
     const setCaloriesHandler = (event) => {
         setCalories(event.target.value);
+        setTouched(true);
     }
 
     const setDietTypeHandler = (event) => {
@@ -32,7 +34,7 @@ const MealPlanner = (props) => {
         if (dietType !== '') {
             url = url + '&diet=' + dietType
         }
-        console.log(url);
+        //console.log(url);
         axios.get(url)
             .then((res) => {
                 setLoading(false);
@@ -75,15 +77,27 @@ const MealPlanner = (props) => {
 
                 <p>Are you still struggling with planning your daily meals??</p>
                 <h5>Food-o-mania is here now to make the it easy for you</h5>
-                <Input type="number" placeholder="Enter Calories for today's diet" changed={setCaloriesHandler} />
+                <Input
+                    type="number"
+                    placeholder="Enter Calories for today's diet"
+                    changed={setCaloriesHandler}
+                    showError={touched && calories < 250}
+                />
 
                 <select onChange={setDietTypeHandler} defaultValue="">
                     <option value="">Non-Vegetarian</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Vegan">Vegan</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
                 </select>
 
-                <Button name="Genrate Diet" clicked={() => generateDietHandler(calories, dietType)} />
+                <Button
+                    name="Genrate Diet"
+                    clicked={() => generateDietHandler(calories, dietType)}
+                    disabled={calories < 250} />
+                {
+                    touched && calories < 250 ?
+                        <p className={classes.warn}>**Please enter minimum 250 calories**</p> : null
+                }
             </div>
             { output}
         </div >

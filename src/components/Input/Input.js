@@ -1,8 +1,14 @@
 import React from 'react';
-import './Input.css';
+import classes from './Input.css';
 
 const Input = (props) => {
-    return <input type={props.type} placeholder={props.placeholder} onChange={props.changed} />
+
+    let inputClasses = [classes.Input]
+    if (props.showError) {
+        inputClasses.push(classes.Error)
+    }
+
+    return <input className={inputClasses.join(' ')} type={props.type} placeholder={props.placeholder} onChange={props.changed} />
 }
 
 export default Input;

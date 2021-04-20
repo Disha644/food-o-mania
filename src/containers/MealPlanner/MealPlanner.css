@@ -39,6 +39,17 @@
   height: 320px;
 }
 
+.warn {
+  font-size: small;
+  font-weight: bold;
+  color: rgb(243, 78, 78);
+  background-color: rgb(252, 242, 242);
+  width: 70%;
+  margin: auto;
+  max-width: 260px;
+  border-radius: 2px;
+}
+
 .List {
   width: 80%;
   display: flex;

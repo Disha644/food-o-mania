@@ -1,4 +1,4 @@
-input {
+.Input {
   margin: 5px auto;
   height: 40px;
   outline: none;
@@ -7,4 +7,9 @@ input {
   font: inherit;
   padding: 6px 20px 6px;
   box-sizing: border-box;
+}
+
+.Error {
+  background-color: rgb(255, 230, 226);
+  border: 1px solid rgb(248, 129, 110);
 }
