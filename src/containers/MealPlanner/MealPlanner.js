@@ -32,8 +32,12 @@ const MealPlanner = (props) => {
         setLoading(true);
         let url = '/mealplanner/generate?timeFrame=day&targetCalories=' + calories + '&apiKey=' + API_KEY;
         if (dietType !== '') {
-            url = url + '&diet=' + dietType
+            url = url + '&diet=' + dietType;
         }
+        if (dietType === 'vegetarian') {
+            url = url + '&exclude=eggs';
+        }
+
         //console.log(url);
         axios.get(url)
             .then((res) => {
@@ -100,7 +104,7 @@ const MealPlanner = (props) => {
                 }
             </div>
             { output}
-        </div >
+        </div>
     );
 }
 

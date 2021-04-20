@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import classes from './Layout.css';
 
 import NavigationBar from '../../components/Navigation/NavigationBar/NavigationBar';
@@ -17,13 +17,13 @@ const Layout = (props) => {
     }
 
     return (
-        <div>
+        <Fragment>
             <SideDrawer sideDrawerOpen={sideDrawerOpen} close={closeSideDrawerHandler} />
             <NavigationBar open={openSideDrawerHandler} />
             <main className={classes.Content}>
                 {props.children}
             </main>
-        </div>
+        </Fragment>
     );
 }
 
