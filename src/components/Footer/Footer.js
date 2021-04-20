@@ -11,8 +11,7 @@ const Footer = (props) => {
             <i class="fas fa-envelope footer-icons"></i>
 
             <p>Made with <i class="far fa-heart" style={{ color: 'rgb(253, 75, 75)', margin: 'auto' }}></i> in India</p>
-            <p>All the <i class="far fa-copyright" style={{ fontSize: 'small', margin: 'auto' }}></i> Copyrights are reserved
-            Food-o-Mania</p>
+            <p>All the <i class="far fa-copyright" style={{ fontSize: 'small', margin: 'auto' }}></i> Copyrights are reserved by Food-o-Mania</p>
 
         </footer>
     );
