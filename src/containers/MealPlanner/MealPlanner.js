@@ -53,14 +53,14 @@ const MealPlanner = (props) => {
     }
 
     let output = (
-        <p style={{ color: 'rgb(92, 88, 88)' }}>Get a personalised diet plan today with Food-o-Mania</p>
+        <p style={{ color: 'rgb(92, 88, 88)', marginTop: '30px' }}>Get a personalised diet plan today with Food-o-Mania</p>
     );
     if (loading) {
         output = <Spinner />
     }
     if (meals.length > 0) {
         output = (
-            <div style={{ color: 'rgb(92, 88, 88)' }}>
+            <div style={{ color: 'rgb(92, 88, 88)', marginTop: '20px' }}>
                 <h5>Nutrients content in your diet</h5>
                 <ul>
                     <li>Fat: {Math.floor(nutrients.fat)} g</li>
@@ -103,7 +103,7 @@ const MealPlanner = (props) => {
                         <p className={classes.warn}>**Please enter minimum 250 calories**</p> : null
                 }
             </div>
-            { output}
+            {output}
         </div>
     );
 }

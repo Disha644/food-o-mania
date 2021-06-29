@@ -6,7 +6,7 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Footer from '../../components/Footer/Footer';
 import axios from '../../spoonacular-data-axios';
-import Background from '../../assets/searchRecipesBackground.jpg';
+import Background from '../../assets/2614486.jpg';
 import classes from './RecipeList.css';
 
 const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
@@ -33,9 +33,11 @@ const RecipeList = (props) => {
 
     const valueChangeHandler = (event) => {
         setSearchValue(event.target.value);
+        setLoading(true);
         axios.get('/recipes/autocomplete?addRecipeInformation=true&number=10&query=' + event.target.value + '&apiKey=' + API_KEY)
             .then((res) => {
                 //console.log(res);
+                setLoading(false);
                 setRecipes(res.data);
             })
     }

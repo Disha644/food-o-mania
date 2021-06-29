@@ -13,7 +13,6 @@
 .Image {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 0 35%;
   height: 250px;
 }
 
@@ -23,7 +22,7 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  margin: 10px auto;
+  margin: 20px auto;
   justify-content: space-evenly;
   align-items: flex-start;
 }
