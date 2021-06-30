@@ -1,5 +1,5 @@
 .Menu {
-  height: 60%;
+  height: 40%;
   width: 40px;
   display: flex;
   flex-direction: column;
@@ -10,8 +10,8 @@
 }
 
 .Menu div {
-  height: 6px;
-  width: 90%;
+  height: 4.5px;
+  width: 65%;
   background-color: rgb(78, 77, 77);
   border-radius: 1px;
 }

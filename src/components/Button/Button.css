@@ -11,8 +11,11 @@ button {
   padding: 8px 15px;
 }
 
-button:hover {
+button:hover,
+button:active,
+button:focus {
   background: #445d77;
+  border: 1px solid #425b75;
 }
 
 button:disabled {

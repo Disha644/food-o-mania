@@ -34,12 +34,27 @@ const RecipeList = (props) => {
     const valueChangeHandler = (event) => {
         setSearchValue(event.target.value);
         setLoading(true);
-        axios.get('/recipes/autocomplete?addRecipeInformation=true&number=10&query=' + event.target.value + '&apiKey=' + API_KEY)
-            .then((res) => {
-                //console.log(res);
-                setLoading(false);
-                setRecipes(res.data);
-            })
+
+        if (event.target.value === '') {
+            axios.get('/recipes/random?number=10&tags=vegetarian&apiKey=' + API_KEY)
+                .then((res) => {
+                    //console.log(res.data.recipes);
+                    setLoading(false);
+                    setRecipes(res.data.recipes);
+                })
+                .catch((err) => {
+                    setLoading(false);
+                    console.log(err);
+                })
+        }
+        else {
+            axios.get('/recipes/autocomplete?addRecipeInformation=true&number=10&query=' + event.target.value + '&apiKey=' + API_KEY)
+                .then((res) => {
+                    //console.log(res);
+                    setLoading(false);
+                    setRecipes(res.data);
+                })
+        }
     }
 
     const searchHandler = (searchValue) => {

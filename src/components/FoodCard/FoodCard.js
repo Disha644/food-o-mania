@@ -17,7 +17,7 @@ const FoodCard = ({ recipe }) => {
             <img src={imageUrl} alt="recipe_image" />
             <p>{recipe.title}</p>
             {recipe.readyInMinutes ? <p>Prepration time: {recipe.readyInMinutes} mins</p> : null}
-            { link}
+            {link}
         </div >
     );
 }

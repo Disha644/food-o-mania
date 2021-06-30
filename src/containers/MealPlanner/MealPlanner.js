@@ -58,6 +58,7 @@ const MealPlanner = (props) => {
     if (loading) {
         output = <Spinner />
     }
+    
     if (meals.length > 0) {
         output = (
             <div style={{ color: 'rgb(92, 88, 88)', marginTop: '20px' }}>
