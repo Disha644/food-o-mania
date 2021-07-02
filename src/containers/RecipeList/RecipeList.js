@@ -1,78 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard'
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Footer from '../../components/Footer/Footer';
-import axios from '../../spoonacular-data-axios';
 import Background from '../../assets/2614486.jpg';
+import { setSearchValue, autocompleteRecipes, complexRecipeSearch, getRandomRecipes } from '../../store/actions/index'
 import classes from './RecipeList.css';
 
-const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
 const RecipeList = (props) => {
 
-    const [recipes, setRecipes] = useState([]);
-    const [searchValue, setSearchValue] = useState('')
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const loading = useSelector(state => state.recipe.loading);
+    const searchValue = useSelector(state => state.recipe.searchValue);
+    const recipes = useSelector(state => state.recipe.recipes);
 
     useEffect(() => {
-
-        setLoading(true);
-        axios.get('/recipes/random?number=10&tags=vegetarian&apiKey=' + API_KEY)
-            .then((res) => {
-                //console.log(res.data.recipes);
-                setLoading(false);
-                setRecipes(res.data.recipes);
-            })
-            .catch((err) => {
-                setLoading(false);
-                console.log(err);
-            })
-    }, []);
+        dispatch(getRandomRecipes());
+    }, [dispatch]);
 
     const valueChangeHandler = (event) => {
-        setSearchValue(event.target.value);
-        setLoading(true);
 
+        dispatch(setSearchValue(event.target.value));
         if (event.target.value === '') {
-            axios.get('/recipes/random?number=10&tags=vegetarian&apiKey=' + API_KEY)
-                .then((res) => {
-                    //console.log(res.data.recipes);
-                    setLoading(false);
-                    setRecipes(res.data.recipes);
-                })
-                .catch((err) => {
-                    setLoading(false);
-                    console.log(err);
-                })
+            dispatch(getRandomRecipes());
+        } else {
+            dispatch(autocompleteRecipes(event.target.value));
         }
-        else {
-            axios.get('/recipes/autocomplete?addRecipeInformation=true&number=10&query=' + event.target.value + '&apiKey=' + API_KEY)
-                .then((res) => {
-                    //console.log(res);
-                    setLoading(false);
-                    setRecipes(res.data);
-                })
-        }
+
     }
 
     const searchHandler = (searchValue) => {
-
-        setLoading(true);
-        axios.get('/recipes/complexSearch?addRecipeInformation=true&query=' + searchValue + '&apiKey=' + API_KEY)
-            .then((res) => {
-                //console.log(res);
-                setLoading(false);
-                setRecipes(res.data.results);
-            })
-            .catch((err) => {
-                setLoading(false);
-                console.log(err)
-            })
+        dispatch(complexRecipeSearch(searchValue));
     }
 
-    let output = <p style={{ color: 'rgb(92, 88, 88)' }}> No recipes found!!</p >
+    let output = <p style={{ color: 'rgb(92, 88, 88)', marginBottom: '137px' }}> No recipes found!!</p >
     if (loading) {
         output = <Spinner />
     }

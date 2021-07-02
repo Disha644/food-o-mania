@@ -1,55 +1,36 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard';
-import classes from './MealPlanner.css'
-import axios from '../../spoonacular-data-axios';
 import Background from '../../assets/mealPlannerBackground.png';
+import { getMealPlan, setCalories, setDietType } from '../../store/actions/index';
+import classes from './MealPlanner.css';
 
-const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
+
 const MealPlanner = (props) => {
 
-    const [meals, setMeals] = useState([]);
-    const [nutrients, setNutrients] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [calories, setCalories] = useState(0);
+    const dispatch = useDispatch();
     const [touched, setTouched] = useState(false);
-    const [dietType, setDietType] = useState('');
+    const meals = useSelector(state => state.mealPlanner.meals);
+    const nutrients = useSelector(state => state.mealPlanner.nutrients);
+    const loading = useSelector(state => state.mealPlanner.loading);
+    const calories = useSelector(state => state.mealPlanner.calories);
+    const dietType = useSelector(state => state.mealPlanner.dietType)
 
     const setCaloriesHandler = (event) => {
-        setCalories(event.target.value);
+        dispatch(setCalories(event.target.value));
         setTouched(true);
     }
 
     const setDietTypeHandler = (event) => {
-        setDietType(event.target.value);
+        dispatch(setDietType(event.target.value));
     }
 
     const generateDietHandler = (calories, dietType) => {
-
-        setLoading(true);
-        let url = '/mealplanner/generate?timeFrame=day&targetCalories=' + calories + '&apiKey=' + API_KEY;
-        if (dietType !== '') {
-            url = url + '&diet=' + dietType;
-        }
-        if (dietType === 'vegetarian') {
-            url = url + '&exclude=eggs';
-        }
-
-        //console.log(url);
-        axios.get(url)
-            .then((res) => {
-                setLoading(false);
-                //console.log(res);
-                setMeals(res.data.meals);
-                setNutrients(res.data.nutrients);
-            })
-            .catch((err) => {
-                setLoading(false);
-                console.log(err);
-            })
+        dispatch(getMealPlan(calories, dietType));
     }
 
     let output = (
@@ -58,7 +39,7 @@ const MealPlanner = (props) => {
     if (loading) {
         output = <Spinner />
     }
-    
+
     if (meals.length > 0) {
         output = (
             <div style={{ color: 'rgb(92, 88, 88)', marginTop: '20px' }}>

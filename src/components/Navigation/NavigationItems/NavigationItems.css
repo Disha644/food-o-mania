@@ -4,13 +4,13 @@ a {
   margin: auto 10px;
 }
 
-a:focus {
+a:focus,
+a:hover {
   outline: none;
   border: none;
   color: #f0bc91;
 }
 
-a:hover,
 a:active,
 a.active {
   color: #5488c0;

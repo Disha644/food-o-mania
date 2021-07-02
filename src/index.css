@@ -4,10 +4,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  /*background-image: linear-gradient(to bottom, #fc6f56, #ff416c);
-  background-image: linear-gradient(to left, #09203f 0%, #537895);
-  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);*/
   background-repeat: no-repeat;
   min-height: 100vh;
 }
