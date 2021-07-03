@@ -10,10 +10,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import recipesReducer from './store/reducers/recipes';
 import mealPlannerReducer from './store/reducers/mealPlanner';
+import authReducer from './store/reducers/auth';
 
 const reducer = combineReducers({
   recipe: recipesReducer,
-  mealPlanner: mealPlannerReducer
+  mealPlanner: mealPlannerReducer,
+  auth: authReducer
 })
 
 const store = createStore(reducer, applyMiddleware(thunk));
