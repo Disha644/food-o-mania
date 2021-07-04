@@ -7,7 +7,7 @@ import Input from '../../components/Input/Input';
 import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard';
 import Background from '../../assets/mealPlannerBackground.png';
-import { getMealPlan, setCalories, setDietType } from '../../store/actions/index';
+import { getMealPlan, setCalories, setDietType, setMealOfTheDay } from '../../store/actions/index';
 import classes from './MealPlanner.css';
 
 
@@ -16,11 +16,14 @@ const MealPlanner = (props) => {
     const dispatch = useDispatch();
     const [touched, setTouched] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [mealTitle, setMealTitle] = useState('');
+    const [mealDay,setMealDay] = useState('');
     const meals = useSelector(state => state.mealPlanner.meals);
     const nutrients = useSelector(state => state.mealPlanner.nutrients);
     const loading = useSelector(state => state.mealPlanner.loading);
     const calories = useSelector(state => state.mealPlanner.calories);
-    const dietType = useSelector(state => state.mealPlanner.dietType)
+    const dietType = useSelector(state => state.mealPlanner.dietType);
+    const userId = useSelector(state => state.auth.userId)
 
     const setCaloriesHandler = (event) => {
         dispatch(setCalories(event.target.value));
@@ -43,10 +46,32 @@ const MealPlanner = (props) => {
         setShowModal(false);
     }
 
+    const setMealTitleHandler = (event) => {
+        setMealTitle(event.target.value);
+    }
+
+    const setMealDayHandler = (event) => {
+        setMealDay(event.target.value);
+    }
+
+    const setMeal = (userId,meals,mealTitle,mealDay) =>{
+        dispatch(setMealOfTheDay(userId,meals.map(meal => meal.title),mealTitle,mealDay));
+        closeModalHandler()
+    }
+
 
     let modal = null;
     if (showModal) {
-        modal = <Modal close={closeModalHandler} show={showModal}><p>Hello World</p></Modal>
+        modal = <Modal close={closeModalHandler} show={showModal}>
+            <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
+            <Input type="text" placeholder="Enter Day for the Meal" changed={setMealDayHandler} />
+            <div className={classes.List}>
+                    {meals.map(meal => <li key={meal.id}>{meal.title}</li>)}
+            </div> 
+            <Button name="Save"
+                    clicked={() => setMeal(userId,meals,mealTitle,mealDay)} 
+            />  
+        </Modal>
     }
 
     let output = (

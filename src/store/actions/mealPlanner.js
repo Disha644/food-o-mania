@@ -1,5 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
 import axios from '../../spoonacular-data-axios';
+import { firestore } from '../../firebase';
 
 const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
 
@@ -52,5 +53,16 @@ export const getMealPlan = (calories, dietType) => {
             .then(res => dispatch(fetchDietSuccess(res.data.meals, res.data.nutrients)))
             .catch(err => dispatch(fetchDietFailed()))
 
+    }
+}
+
+export const setMealOfTheDay = (userId,meals,mealTitle,mealDay) =>{
+    return dispatch => {
+        firestore.collection('meals').add({
+            userId:userId,
+            mealTitle:mealTitle,
+            mealDay: mealDay,
+            meals:meals
+        })
     }
 }
