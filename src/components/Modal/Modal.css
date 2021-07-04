@@ -9,16 +9,18 @@
   padding: 16px;
   left: 15%;
   top: 30%;
-  z-index: 500;
   box-sizing: border-box;
+  opacity: 0;
+  transform: scale(0);
+  z-index: 0;
 }
 
 .Open {
-  animation: animate 0.8s ease-in-out 0s 1 normal forwards;
+  animation: animate 0.6s ease-in-out 0s 1 normal forwards;
 }
 
 .Close {
-  animation: animate 3s ease-in-out 0s 1 reverse;
+  animation: animate 0.6s ease-in-out 0s 1 reverse forwards;
 }
 
 @media (min-width: 600px) {
@@ -31,10 +33,12 @@
 @keyframes animate {
   0% {
     opacity: 0;
-    scale: 0;
+    transform: scale(0);
+    z-index: 0;
   }
   100% {
     opacity: 1;
     transform: scale(1);
+    z-index: 500;
   }
 }

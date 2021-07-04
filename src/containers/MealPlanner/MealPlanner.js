@@ -100,7 +100,6 @@ const MealPlanner = (props) => {
 
     return (
         <div className={classes.MealPlanner}>
-
             <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
                 {modal}
                 <p>Are you still struggling with planning your daily meals??</p>

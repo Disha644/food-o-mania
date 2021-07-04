@@ -8,9 +8,11 @@ import classes from './SideDrawer.css';
 
 const SideBar = (props) => {
 
-    let attachedClasses = [classes.SideDrawer, classes.Close];
+    let attachedClasses = [classes.SideDrawer];
     if (props.sideDrawerOpen) {
-        attachedClasses = [classes.SideDrawer, classes.Open];
+        attachedClasses.push(classes.Open);
+    } else {
+        attachedClasses.push(classes.Close);
     }
 
     return (
