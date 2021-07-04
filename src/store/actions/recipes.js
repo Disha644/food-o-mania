@@ -3,7 +3,6 @@ import axios from '../../spoonacular-data-axios';
 
 const API_KEY = 'c7fd3f91e25e47888024d54ecdbc3972';
 
-
 export const setSearchValue = (searchValue) => {
     return {
         type: actionTypes.SET_SEARCH_VALUE,

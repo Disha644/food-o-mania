@@ -7,7 +7,7 @@ import Input from '../../components/Input/Input';
 import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard';
 import Background from '../../assets/mealPlannerBackground.png';
-import { getMealPlan, setCalories, setDietType, setMealOfTheDay } from '../../store/actions/index';
+import { getMealPlan, setCalories, setStatus, setLoader, setDietType, setMealOfTheDay } from '../../store/actions/index';
 import classes from './MealPlanner.css';
 
 
@@ -23,6 +23,8 @@ const MealPlanner = (props) => {
     const loading = useSelector(state => state.mealPlanner.loading);
     const calories = useSelector(state => state.mealPlanner.calories);
     const dietType = useSelector(state => state.mealPlanner.dietType);
+    const saveLoader = useSelector(state => state.mealPlanner.saveLoader);
+    const saveStatus = useSelector(state => state.mealPlanner.saveStatus);
     const userId = useSelector(state => state.auth.userId)
 
     const setCaloriesHandler = (event) => {
@@ -43,6 +45,8 @@ const MealPlanner = (props) => {
     }
 
     const closeModalHandler = () => {
+        dispatch(setStatus(''));
+        dispatch(setLoader(false));
         setShowModal(false);
     }
 
@@ -55,20 +59,35 @@ const MealPlanner = (props) => {
     }
 
     const setMeal = (userId, meals, mealTitle, mealDay) => {
-        dispatch(setMealOfTheDay(userId, meals.map(meal => meal.title), mealTitle, mealDay));
-        closeModalHandler()
+        dispatch(setMealOfTheDay(userId, meals, mealTitle, mealDay));
     }
 
-
     const modal = <Modal close={closeModalHandler} show={showModal}>
-        <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
-        <Input type="text" placeholder="Enter Day for the Meal" changed={setMealDayHandler} />
-        <div className={classes.List}>
-            {meals.map(meal => <li key={meal.id}>{meal.title}</li>)}
-        </div>
-        <Button name="Save"
-            clicked={() => setMeal(userId, meals, mealTitle, mealDay)}
-        />
+        <button type="button" class="close" aria-label="Close" style={{ position: 'absolute', right: 0, top: 0 }} onClick={closeModalHandler}>
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {!saveLoader ? [
+            saveStatus === 'failed' ?
+                <p style={{ color: 'red' }}>Failed To Save Into Database!!</p> :
+                [saveStatus === 'success' ?
+                    <p style={{ color: 'green' }}>Saved Into Database!!</p> :
+                    <div>
+                        <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
+                        <Input type="date" changed={setMealDayHandler} />
+                        <div className={classes.List}>
+                            {meals.map(meal => <div>
+                                <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType}
+                                    alt="recipe_image" style={{ width: '25%', height: '25%' }} />
+                                {meal.title}</div>)}
+                        </div>
+                        <Button name="Save"
+                            clicked={() => setMeal(userId, meals, mealTitle, mealDay)}
+                        />
+                    </div>]]
+            : <Spinner />}
+
+
+
     </Modal>
 
     let output = (

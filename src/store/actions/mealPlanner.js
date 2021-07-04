@@ -18,6 +18,20 @@ export const setDietType = (dietType) => {
     }
 }
 
+export const setStatus = (status) => {
+    return {
+        type: actionTypes.SET_STATUS,
+        status: status
+    }
+}
+
+export const setLoader = (status) => {
+    return {
+        type: actionTypes.SET_LOADER,
+        status: status
+    }
+}
+
 export const fetchDietStart = () => {
     return {
         type: actionTypes.FETCH_DIET_START
@@ -35,6 +49,26 @@ export const fetchDietSuccess = (meals, nutrients) => {
 export const fetchDietFailed = () => {
     return {
         type: actionTypes.FETCH_DIET_FAILED
+    }
+}
+
+export const saveDietStart = (status) => {
+    return {
+        type: actionTypes.SAVE_DIET_START
+    }
+}
+
+export const saveDietSuccess = (status) => {
+    return {
+        type: actionTypes.SAVE_DIET_SUCCESS,
+        status: status
+    }
+}
+
+export const saveDietFailed = (status) => {
+    return {
+        type: actionTypes.SAVE_DIET_FAILED,
+        status: status
     }
 }
 
@@ -58,11 +92,16 @@ export const getMealPlan = (calories, dietType) => {
 
 export const setMealOfTheDay = (userId, meals, mealTitle, mealDay) => {
     return dispatch => {
+        dispatch(saveDietStart())
         firestore.collection('meals').add({
             userId: userId,
             mealTitle: mealTitle,
             mealDay: mealDay,
             meals: meals
+        }).then(res => {
+            dispatch(saveDietSuccess('success'))
+        }).catch(err => {
+            dispatch(saveDietFailed('failed'))
         })
     }
 }
