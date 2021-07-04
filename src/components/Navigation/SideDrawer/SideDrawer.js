@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import NavigationItems from '../NavigationItems/NavigationItems';
-import Backdrop from '../Backdrop/Backdrop';
+import Backdrop from '../../Backdrop/Backdrop';
 import background1 from '../../../assets/SideBar1.jpg';
 import background2 from '../../../assets/Sidebar2.jpg';
 import classes from './SideDrawer.css';

@@ -11,7 +11,7 @@ const NavigationItems = (props) => {
     let links = (
         <>
             <NavLink to="/" exact activeClassName={classes.active} >Search Recipes</NavLink>
-            <NavLink to="/auth" activeClassName={classes.active}>Authenticate</NavLink>
+            <NavLink to="/auth" activeClassName={classes.active}>Login</NavLink>
         </>
     );
 

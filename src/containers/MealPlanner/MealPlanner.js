@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Modal from '../../components/Modal/Modal';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Spinner from '../../components/Spinner/Spinner';
@@ -14,6 +15,7 @@ const MealPlanner = (props) => {
 
     const dispatch = useDispatch();
     const [touched, setTouched] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const meals = useSelector(state => state.mealPlanner.meals);
     const nutrients = useSelector(state => state.mealPlanner.nutrients);
     const loading = useSelector(state => state.mealPlanner.loading);
@@ -31,6 +33,20 @@ const MealPlanner = (props) => {
 
     const generateDietHandler = (calories, dietType) => {
         dispatch(getMealPlan(calories, dietType));
+    }
+
+    const openModalHandler = () => {
+        setShowModal(true);
+    }
+
+    const closeModalHandler = () => {
+        setShowModal(false);
+    }
+
+
+    let modal = null;
+    if (showModal) {
+        modal = <Modal close={closeModalHandler} show={showModal}><p>Hello World</p></Modal>
     }
 
     let output = (
@@ -59,8 +75,9 @@ const MealPlanner = (props) => {
 
     return (
         <div className={classes.MealPlanner}>
-            <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
 
+            <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
+                {modal}
                 <p>Are you still struggling with planning your daily meals??</p>
                 <h5>Food-o-mania is here now to make the it easy for you</h5>
                 <Input
@@ -76,10 +93,14 @@ const MealPlanner = (props) => {
                     <option value="vegan">Vegan</option>
                 </select>
 
+
                 <Button
                     name="Genrate Diet"
                     clicked={() => generateDietHandler(calories, dietType)}
                     disabled={calories < 250} />
+                <Button className={classes.button2} name="Save Meal Plan" clicked={openModalHandler} />
+
+
                 {
                     touched && calories < 250 ?
                         <p className={classes.warn}>**Please enter minimum 250 calories**</p> : null

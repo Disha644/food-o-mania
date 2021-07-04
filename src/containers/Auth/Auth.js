@@ -11,7 +11,7 @@ import classes from './Auth.css';
 
 const Auth = (props) => {
 
-    const dispatch = useDispatch();;
+    const dispatch = useDispatch();
     const isSignup = useSelector(state => state.auth.isSignup);
     const error = useSelector(state => state.auth.error);
     const loading = useSelector(state => state.auth.loading);
@@ -34,31 +34,31 @@ const Auth = (props) => {
 
     let form = (
         <>
-            <form onSubmit={(event) => createAccountHandler(event, name, email, password)}>
-
-                <Input type="text" placeholder="Name" changed={(event) => setName(event.target.value)} />
+            <form onSubmit={(event) => loginHandler(event, email, password)}>
                 <Input type="text" placeholder="Email" changed={(event) => setEmail(event.target.value)} />
                 <Input type="password" placeholder="Password" changed={(event) => setPassword(event.target.value)} />
-                <Button type="submit" name="Sign Up" />
+                <Button type="submit" name="Sign In" />
                 {error ? <p className={classes.error}>{error}</p> : null}
             </form>
-            <p>Already have account?<span onClick={() => dispatch(setIsSignup())} style={{ color: 'rgb(69, 157, 216)', fontWeight: '600', cursor: 'pointer' }}> Sign In</span></p>
+            <p>New User?<span onClick={() => dispatch(setIsSignup())} style={{ color: 'rgb(69, 157, 216)', fontWeight: '600', cursor: 'pointer' }}> Create account</span></p>
         </>
     );
 
-    if (!isSignup) {
+
+    if (isSignup) {
         form = (
             <>
-                <form onSubmit={(event) => loginHandler(event, email, password)}>
+                <form onSubmit={(event) => createAccountHandler(event, name, email, password)}>
+
+                    <Input type="text" placeholder="Name" changed={(event) => setName(event.target.value)} />
                     <Input type="text" placeholder="Email" changed={(event) => setEmail(event.target.value)} />
                     <Input type="password" placeholder="Password" changed={(event) => setPassword(event.target.value)} />
-                    <Button type="submit" name="Sign In" />
+                    <Button type="submit" name="Sign Up" />
                     {error ? <p className={classes.error}>{error}</p> : null}
                 </form>
-                <p>New User?<span onClick={() => dispatch(setIsSignup())} style={{ color: 'rgb(69, 157, 216)', fontWeight: '600', cursor: 'pointer' }}> Create account</span></p>
+                <p>Already have account?<span onClick={() => dispatch(setIsSignup())} style={{ color: 'rgb(69, 157, 216)', fontWeight: '600', cursor: 'pointer' }}> Sign In</span></p>
             </>
         );
-
     }
 
     if (loading) {

@@ -10,6 +10,11 @@
   max-width: 270px;
 }
 
+.MealPlanner button {
+  display: inline-block;
+  margin: 10px;
+}
+
 .MealPlanner ul {
   list-style: none;
   display: flex;
@@ -43,6 +48,18 @@
   background-size: cover;
   background-position: 0 35%;
   height: 320px;
+}
+
+.button2 {
+  background: rgb(206, 94, 133);
+  border: 1px solid rgb(206, 94, 133);
+}
+
+.button2:hover,
+.button2:active,
+.button2:focus {
+  background: rgb(202, 109, 142);
+  border: 1px solid rgb(202, 109, 142);
 }
 
 .warn {
