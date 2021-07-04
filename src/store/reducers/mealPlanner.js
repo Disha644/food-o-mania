@@ -5,7 +5,7 @@ const initialState = {
     nutrients: '',
     loading: false,
     saveLoader: false,
-    saveFailed: false,
+    saveStatus: '',
     calories: 0,
     dietType: ''
 }
@@ -22,6 +22,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 dietType: action.dietType
+            }
+        case actionTypes.SET_STATUS:
+            return {
+                ...state,
+                saveStatus: action.status
+            }
+        case actionTypes.SET_LOADER:
+            return {
+                ...state,
+                saveLoader: action.status
             }
         case actionTypes.FETCH_DIET_START:
             return {
@@ -43,20 +53,19 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SAVE_DIET_START:
             return {
                 ...state,
-                saveLoader: true,
-                saveFailed: false
+                saveLoader: true
             }
         case actionTypes.SAVE_DIET_SUCCESS:
             return {
                 ...state,
                 saveLoader:false,
-                saveFailed: false
+                saveStatus:action.status
             }
         case actionTypes.SAVE_DIET_FAILED:
             return {
                 ...state, 
                 saveLoader:false,
-                saveFailed: true
+                saveStatus:action.status
             }
         default: return state;
     }

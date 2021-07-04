@@ -18,6 +18,20 @@ export const setDietType = (dietType) => {
     }
 }
 
+export const setStatus = (status) => {
+    return {
+        type: actionTypes.SET_STATUS,
+        status: status
+    }
+}
+
+export const setLoader = (status) => {
+    return {
+        type: actionTypes.SET_LOADER,
+        status: status
+    }
+}
+
 export const fetchDietStart = () => {
     return {
         type: actionTypes.FETCH_DIET_START
@@ -38,21 +52,23 @@ export const fetchDietFailed = () => {
     }
 }
 
-export const saveDietStart = () => {
+export const saveDietStart = (status) => {
     return {
         type : actionTypes.SAVE_DIET_START
     }
 }
 
-export const saveDietSuccess = () => {
+export const saveDietSuccess = (status) => {
     return {
-        type : actionTypes.SAVE_DIET_SUCCESS
+        type : actionTypes.SAVE_DIET_SUCCESS,
+        status:status
     }
 }
 
-export const saveDietFailed = () => {
+export const saveDietFailed = (status) => {
     return {
-        type : actionTypes.SAVE_DIET_FAILED
+        type : actionTypes.SAVE_DIET_FAILED,
+        status:status
     }
 }
 
@@ -83,9 +99,9 @@ export const setMealOfTheDay = (userId,meals,mealTitle,mealDay) =>{
             mealDay: mealDay,
             meals:meals
         }).then(res => {
-            dispatch(saveDietSuccess())
+            dispatch(saveDietSuccess('success'))
         }).catch(err => {
-            dispatch(saveDietFailed())
+            dispatch(saveDietFailed('failed'))
         })
     }
 }
