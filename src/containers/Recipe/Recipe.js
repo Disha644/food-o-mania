@@ -16,7 +16,7 @@ const Recipe = (props) => {
 
     useEffect(() => {
         dispatch(getRecipe(url));
-    }, []);
+    }, [dispatch, url]);
 
     console.log(recipe);
 
@@ -28,7 +28,7 @@ const Recipe = (props) => {
                     <img src={recipe.image} alt="recipe_img" />
                     <p className={classes.title}>Ingredients</p>
                     <ul>
-                        {recipe.extendedIngredients.map(ing => <li>{ing.originalString}</li>)}
+                        {recipe.extendedIngredients.map(ing => <li key={ing.originalString}>{ing.originalString}</li>)}
                     </ul>
                     <p className={classes.title}>Recipe</p>
                     <p>{recipe.instructions}</p>

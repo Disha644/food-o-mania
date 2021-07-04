@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../spoonacular-data-axios';
 
-const API_KEY = 'c7fd3f91e25e47888024d54ecdbc3972';
+const API_KEY = '1909925d99744142822955c48c2f36a8';
 
 export const fetchViewedRecipeStart = () => {
     return {

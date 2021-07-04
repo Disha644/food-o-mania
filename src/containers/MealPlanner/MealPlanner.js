@@ -63,27 +63,36 @@ const MealPlanner = (props) => {
     }
 
     const modal = <Modal close={closeModalHandler} show={showModal}>
-        <button type="button" class="close" aria-label="Close" style={{ position: 'absolute', right: 0, top: 0 }} onClick={closeModalHandler}>
+
+        <button type="button" className="close" aria-label="Close" style={{ position: 'absolute', right: 0, top: 0 }} onClick={closeModalHandler}>
             <span aria-hidden="true">&times;</span>
         </button>
+
         {!saveLoader ? [
             saveStatus === 'failed' ?
                 <p style={{ color: 'red' }}>Failed To Save Into Database!!</p> :
                 [saveStatus === 'success' ?
                     <p style={{ color: 'green' }}>Saved Into Database!!</p> :
+
                     <div>
-                        <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
+
+                        <Input type="text" placeholder="Name" changed={setMealTitleHandler} />
                         <Input type="date" changed={setMealDayHandler} />
                         <div className={classes.List}>
-                            {meals.map(meal => <div>
-                                <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType}
-                                    alt="recipe_image" style={{ width: '25%', height: '25%' }} />
-                                {meal.title}</div>)}
+                            {meals.map(meal => (
+                                <div key={meal.id} className={classes.meal}>
+                                    <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType}
+                                        alt="recipe_image" />
+                                    <p>{meal.title}</p>
+                                </div>
+                            ))}
                         </div>
+
                         <Button name="Save"
                             clicked={() => setMeal(userId, meals, mealTitle, mealDay)}
                         />
                     </div>]]
+
             : <Spinner />}
 
 
@@ -138,7 +147,7 @@ const MealPlanner = (props) => {
                     name="Genrate Diet"
                     clicked={() => generateDietHandler(calories, dietType)}
                     disabled={calories < 250} />
-                <Button className={classes.button2} name="Save Meal Plan" clicked={openModalHandler} />
+                <Button className={classes.button2} name="Save Meal Plan" disabled={meals.length === 0} clicked={openModalHandler} />
 
 
                 {
