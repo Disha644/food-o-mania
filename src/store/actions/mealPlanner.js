@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import axios from '../../spoonacular-data-axios';
 import { firestore } from '../../firebase';
 
-const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
+const API_KEY = 'c7fd3f91e25e47888024d54ecdbc3972';
 
 export const setCalories = (calories) => {
     return {
@@ -38,6 +38,24 @@ export const fetchDietFailed = () => {
     }
 }
 
+export const saveDietStart = () => {
+    return {
+        type : actionTypes.SAVE_DIET_START
+    }
+}
+
+export const saveDietSuccess = () => {
+    return {
+        type : actionTypes.SAVE_DIET_SUCCESS
+    }
+}
+
+export const saveDietFailed = () => {
+    return {
+        type : actionTypes.SAVE_DIET_FAILED
+    }
+}
+
 export const getMealPlan = (calories, dietType) => {
     return dispatch => {
 
@@ -58,11 +76,16 @@ export const getMealPlan = (calories, dietType) => {
 
 export const setMealOfTheDay = (userId,meals,mealTitle,mealDay) =>{
     return dispatch => {
+        dispatch(saveDietStart())
         firestore.collection('meals').add({
             userId:userId,
             mealTitle:mealTitle,
             mealDay: mealDay,
             meals:meals
+        }).then(res => {
+            dispatch(saveDietSuccess())
+        }).catch(err => {
+            dispatch(saveDietFailed())
         })
     }
 }

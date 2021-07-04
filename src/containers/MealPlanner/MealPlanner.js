@@ -23,6 +23,8 @@ const MealPlanner = (props) => {
     const loading = useSelector(state => state.mealPlanner.loading);
     const calories = useSelector(state => state.mealPlanner.calories);
     const dietType = useSelector(state => state.mealPlanner.dietType);
+    // const saveLoader = useSelector(state => state.mealPlanner.saveLoader);
+    // const saveFailed = useSelector(state => state.mealPlanner.saveFailed)
     const userId = useSelector(state => state.auth.userId)
 
     const setCaloriesHandler = (event) => {
@@ -55,24 +57,24 @@ const MealPlanner = (props) => {
     }
 
     const setMeal = (userId,meals,mealTitle,mealDay) =>{
-        dispatch(setMealOfTheDay(userId,meals.map(meal => meal.title),mealTitle,mealDay));
-        closeModalHandler()
+        dispatch(setMealOfTheDay(userId,meals,mealTitle,mealDay));
     }
 
-
-    let modal = null;
-    if (showModal) {
-        modal = <Modal close={closeModalHandler} show={showModal}>
+    const modal = <Modal close={closeModalHandler} show={showModal}>
+        <div>
             <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
-            <Input type="text" placeholder="Enter Day for the Meal" changed={setMealDayHandler} />
+            <Input type="date" changed={setMealDayHandler} />
             <div className={classes.List}>
-                    {meals.map(meal => <li key={meal.id}>{meal.title}</li>)}
+                    {meals.map(meal => <div>
+                        <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType} 
+                        alt="recipe_image" style={{width:'25%', height:'25%' }} />
+                        {meal.title}</div>)}
             </div> 
             <Button name="Save"
                     clicked={() => setMeal(userId,meals,mealTitle,mealDay)} 
-            />  
-        </Modal>
-    }
+            /> </div>
+            
+    </Modal>
 
     let output = (
         <p style={{ color: 'rgb(92, 88, 88)', marginTop: '30px' }}>Get a personalised diet plan today with Food-o-Mania</p>

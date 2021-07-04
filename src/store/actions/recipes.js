@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import axios from '../../spoonacular-data-axios';
 
-const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
+const API_KEY = 'c7fd3f91e25e47888024d54ecdbc3972';
 
 export const setSearchValue = (searchValue) => {
     return {
