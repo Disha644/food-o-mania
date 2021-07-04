@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import classes from './FoodCard.css';
 
 const FoodCard = ({ recipe }) => {
@@ -7,7 +9,8 @@ const FoodCard = ({ recipe }) => {
 
     let link = ''
     if (recipe.sourceUrl) {
-        link = <a href={recipe.sourceUrl} target="_blank" rel="noreferrer">Click to view recipe</a>
+        const encodedUrl = encodeURIComponent(recipe.sourceUrl)
+        link = <Link to={'/recipe/' + recipe.id + '/' + encodedUrl}>Click to view recipe</Link>
     } else {
         link = <p style={{ color: 'grey' }}>Our suggestions you may like to try</p>
     }

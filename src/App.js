@@ -7,6 +7,7 @@ import RecipeList from './containers/RecipeList/RecipeList'
 import MealPlanner from './containers/MealPlanner/MealPlanner'
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
+import Recipe from './containers/Recipe/Recipe';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/meal-planner" component={MealPlanner} />
           <Route path="/auth" component={Auth} />
           <Route path="/logout" component={Logout} />
+          <Route path="/recipe/:id/:url" component={Recipe} />
           <Route path="/" component={RecipeList} />
         </Switch>
       </Layout>

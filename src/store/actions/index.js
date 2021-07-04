@@ -3,3 +3,5 @@ export { getRandomRecipes, complexRecipeSearch, autocompleteRecipes, setSearchVa
 export { setDietType, setCalories, getMealPlan, setMealOfTheDay } from './mealPlanner';
 
 export { setIsSignup, signUp, SignIn, logout } from './auth'
+
+export { getRecipe } from './directions';

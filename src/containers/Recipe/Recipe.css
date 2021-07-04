@@ -1,0 +1,16 @@
+.Recipe {
+  margin: 100px auto;
+  color: rgb(78, 77, 77);
+}
+
+.title {
+  font-weight: 600;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.error {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(255, 74, 74);
+}

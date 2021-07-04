@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import axios from '../../spoonacular-data-axios';
 import { firestore } from '../../firebase';
 
-const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
+const API_KEY = 'c7fd3f91e25e47888024d54ecdbc3972';
 
 export const setCalories = (calories) => {
     return {
@@ -56,13 +56,13 @@ export const getMealPlan = (calories, dietType) => {
     }
 }
 
-export const setMealOfTheDay = (userId,meals,mealTitle,mealDay) =>{
+export const setMealOfTheDay = (userId, meals, mealTitle, mealDay) => {
     return dispatch => {
         firestore.collection('meals').add({
-            userId:userId,
-            mealTitle:mealTitle,
+            userId: userId,
+            mealTitle: mealTitle,
             mealDay: mealDay,
-            meals:meals
+            meals: meals
         })
     }
 }

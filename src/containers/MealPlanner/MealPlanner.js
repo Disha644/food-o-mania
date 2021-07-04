@@ -17,7 +17,7 @@ const MealPlanner = (props) => {
     const [touched, setTouched] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [mealTitle, setMealTitle] = useState('');
-    const [mealDay,setMealDay] = useState('');
+    const [mealDay, setMealDay] = useState('');
     const meals = useSelector(state => state.mealPlanner.meals);
     const nutrients = useSelector(state => state.mealPlanner.nutrients);
     const loading = useSelector(state => state.mealPlanner.loading);
@@ -54,25 +54,22 @@ const MealPlanner = (props) => {
         setMealDay(event.target.value);
     }
 
-    const setMeal = (userId,meals,mealTitle,mealDay) =>{
-        dispatch(setMealOfTheDay(userId,meals.map(meal => meal.title),mealTitle,mealDay));
+    const setMeal = (userId, meals, mealTitle, mealDay) => {
+        dispatch(setMealOfTheDay(userId, meals.map(meal => meal.title), mealTitle, mealDay));
         closeModalHandler()
     }
 
 
-    let modal = null;
-    if (showModal) {
-        modal = <Modal close={closeModalHandler} show={showModal}>
-            <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
-            <Input type="text" placeholder="Enter Day for the Meal" changed={setMealDayHandler} />
-            <div className={classes.List}>
-                    {meals.map(meal => <li key={meal.id}>{meal.title}</li>)}
-            </div> 
-            <Button name="Save"
-                    clicked={() => setMeal(userId,meals,mealTitle,mealDay)} 
-            />  
-        </Modal>
-    }
+    const modal = <Modal close={closeModalHandler} show={showModal}>
+        <Input type="text" placeholder="Enter Name for the Meal" changed={setMealTitleHandler} />
+        <Input type="text" placeholder="Enter Day for the Meal" changed={setMealDayHandler} />
+        <div className={classes.List}>
+            {meals.map(meal => <li key={meal.id}>{meal.title}</li>)}
+        </div>
+        <Button name="Save"
+            clicked={() => setMeal(userId, meals, mealTitle, mealDay)}
+        />
+    </Modal>
 
     let output = (
         <p style={{ color: 'rgb(92, 88, 88)', marginTop: '30px' }}>Get a personalised diet plan today with Food-o-Mania</p>
