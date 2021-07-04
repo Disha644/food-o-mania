@@ -43,11 +43,7 @@ const MealPlanner = (props) => {
         setShowModal(false);
     }
 
-
-    let modal = null;
-    if (showModal) {
-        modal = <Modal close={closeModalHandler} show={showModal}><p>Hello World</p></Modal>
-    }
+    const modal = <Modal close={closeModalHandler} show={showModal}><p>Hello World</p></Modal>
 
     let output = (
         <p style={{ color: 'rgb(92, 88, 88)', marginTop: '30px' }}>Get a personalised diet plan today with Food-o-Mania</p>
@@ -75,7 +71,6 @@ const MealPlanner = (props) => {
 
     return (
         <div className={classes.MealPlanner}>
-
             <div className={classes.Image} style={{ backgroundImage: `url(${Background})` }}>
                 {modal}
                 <p>Are you still struggling with planning your daily meals??</p>

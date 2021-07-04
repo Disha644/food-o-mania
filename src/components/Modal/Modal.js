@@ -5,9 +5,9 @@ import classes from './Modal.css'
 
 const Modal = (props) => {
 
-    let attachedClasses = [classes.Modal, classes.Close];
+    let attachedClasses = [classes.Modal];
     if (props.show) {
-        attachedClasses = [classes.Modal, classes.Open];
+        attachedClasses.push(classes.Open);
     }
 
     return (
