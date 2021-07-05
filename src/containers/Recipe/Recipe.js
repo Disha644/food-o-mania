@@ -25,13 +25,21 @@ const Recipe = (props) => {
             {recipe ? (
                 <>
                     <h3>{recipe.title}</h3>
-                    <img src={recipe.image} alt="recipe_img" />
-                    <p className={classes.title}>Ingredients</p>
-                    <ul>
-                        {recipe.extendedIngredients.map(ing => <li key={ing.originalString}>{ing.originalString}</li>)}
-                    </ul>
-                    <p className={classes.title}>Recipe</p>
-                    <p>{recipe.instructions}</p>
+                    <div className={classes.header}>
+                        <img src={recipe.image} alt="recipe_img" />
+                        <div className={classes.ings}>
+                            <p className={classes.title}>Ingredients</p>
+                            <ul>
+                                {recipe.extendedIngredients.map(ing => <li key={ing.originalString}>{ing.originalString}</li>)}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className={classes.instructions}>
+                        <p>Recipe</p>
+                        <ol>
+                            {recipe.analyzedInstructions[0].steps.map(ins => <li key={ins.number}>{ins.step}</li>)}
+                        </ol>
+                    </div>
                 </>
             )
                 : (loading ? <Spinner /> : <p className={classes.error}>{error}</p>)

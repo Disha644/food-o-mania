@@ -74,7 +74,7 @@ const MealPlanner = (props) => {
                 [saveStatus === 'success' ?
                     <p style={{ color: 'green' }}>Saved Into Database!!</p> :
 
-                    <div>
+                    <div className={classes.modalContent}>
 
                         <Input type="text" placeholder="Name" changed={setMealTitleHandler} />
                         <Input type="date" changed={setMealDayHandler} />
@@ -87,15 +87,13 @@ const MealPlanner = (props) => {
                                 </div>
                             ))}
                         </div>
-
                         <Button name="Save"
                             clicked={() => setMeal(userId, meals, mealTitle, mealDay)}
                         />
+
                     </div>]]
 
             : <Spinner />}
-
-
 
     </Modal>
 

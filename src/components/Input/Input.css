@@ -11,7 +11,7 @@
 }
 
 .Input:focus {
-  border: 2px solid rgb(39, 39, 39);
+  border: 2px solid rgb(139, 139, 139);
   border-radius: 4px;
 }
 
