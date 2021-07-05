@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import classes from './App.css';
 
 import Layout from './containers/Layout/Layout';
@@ -14,11 +14,12 @@ function App() {
     <div className={classes.App}>
       <Layout>
         <Switch>
-          <Route path="/meal-planner" component={MealPlanner} />
-          <Route path="/auth" component={Auth} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/recipe/:id/:url" component={Recipe} />
-          <Route path="/" component={RecipeList} />
+          <Route path='/meal-planner' component={MealPlanner} />
+          <Route path='/auth' component={Auth} />
+          <Route path='/logout' component={Logout} />
+          <Route path='/recipe/:id/:url' component={Recipe} />
+          <Route path='/' exact component={RecipeList} />
+          <Redirect to='/' />
         </Switch>
       </Layout>
     </div>
