@@ -63,11 +63,10 @@ const MealPlanner = (props) => {
     }
 
     const modal = <Modal close={closeModalHandler} show={showModal}>
-
-        <button type="button" className="close" aria-label="Close" style={{ position: 'absolute', right: 0, top: 0 }} onClick={closeModalHandler}>
-            <span aria-hidden="true">&times;</span>
-        </button>
-
+            <i class="fas fa-times fa-lg"  
+            aria-hidden="true" 
+            style={{ position: 'absolute', right: 5, top: 10}} 
+            onClick={closeModalHandler}></i>
         {!saveLoader ? [
             saveStatus === 'failed' ?
                 <p style={{ color: 'red' }}>Failed To Save Into Database!!</p> :
