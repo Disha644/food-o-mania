@@ -68,7 +68,7 @@ const Auth = (props) => {
 
     return (
         <>
-            {userId ? <Redirect to='/' /> : null}
+            {userId ? <Redirect to='/search' /> : null}
             <div className={classes.Auth}>
                 <h2>Food-o-mania</h2>
                 {form}

@@ -8,6 +8,7 @@ import MealPlanner from './containers/MealPlanner/MealPlanner'
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Recipe from './containers/Recipe/Recipe';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path='/auth' component={Auth} />
           <Route path='/logout' component={Logout} />
           <Route path='/recipe/:id/:url' component={Recipe} />
-          <Route path='/' exact component={RecipeList} />
+          <Route path='/search' exact component={RecipeList} />
+          <Route path='/' component={Home} />
           <Redirect to='/' />
         </Switch>
       </Layout>

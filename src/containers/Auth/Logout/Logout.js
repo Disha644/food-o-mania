@@ -11,7 +11,7 @@ const Logout = () => {
         dispatch(logout());
     })
 
-    return <Redirect to='/auth' />
+    return <Redirect to='/' />
 }
 
 export default Logout;
