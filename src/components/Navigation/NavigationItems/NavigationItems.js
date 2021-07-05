@@ -12,6 +12,7 @@ const NavigationItems = (props) => {
         <>
             <NavLink to="/search" exact activeClassName={classes.active} >Search Recipes</NavLink>
             <NavLink to="/auth" activeClassName={classes.active}>Login</NavLink>
+            <NavLink to='/profile' activeClassName={classes.active}>Profile</NavLink>
         </>
     );
 

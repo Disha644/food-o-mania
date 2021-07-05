@@ -5,6 +5,7 @@ import classes from './App.css';
 import Layout from './containers/Layout/Layout';
 import RecipeList from './containers/RecipeList/RecipeList'
 import MealPlanner from './containers/MealPlanner/MealPlanner'
+import Profile from './containers/Profile/Profile'
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Recipe from './containers/Recipe/Recipe';
@@ -20,6 +21,7 @@ function App() {
           <Route path='/logout' component={Logout} />
           <Route path='/recipe/:id/:url' component={Recipe} />
           <Route path='/search' exact component={RecipeList} />
+          <Route path='/profile' component={Profile}/>     
           <Route path='/' component={Home} />
           <Redirect to='/' />
         </Switch>
