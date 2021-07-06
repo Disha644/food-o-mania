@@ -29,19 +29,6 @@ const Profile = (props) => {
 
     return (
         <div className={classes.Profile}>
-            <Tabs>
-                <TabList>
-                <Tab>Title 1</Tab>
-                <Tab>Title 2</Tab>
-                </TabList>
-
-                <TabPanel>
-                <h2>Any content 1</h2>
-                </TabPanel>
-                <TabPanel>
-                <h2>Any content 2</h2>
-                </TabPanel>
-            </Tabs>
             {userData ? (
                 <>
                     <div className={classes.header}>
@@ -63,6 +50,19 @@ const Profile = (props) => {
                     </div>
                 </>
             ) : <Spinner />}
+            <Tabs>
+                <TabList>
+                <Tab>Title 1</Tab>
+                <Tab>Title 2</Tab>
+                </TabList>
+
+                <TabPanel>
+                <h2>Any content 1</h2>
+                </TabPanel>
+                <TabPanel>
+                <h2>Any content 2</h2>
+                </TabPanel>
+            </Tabs>
         </div>
     );
 }

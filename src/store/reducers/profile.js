@@ -10,6 +10,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 userData: action.data
             }
+        case actionTypes.SET_USER_PHOTO:
+            return {
+                ...state,
+                userData: {
+                    ...state.userData,
+                    profilePic: action.data
+                }
+            }
         default: return state;
     }
 }

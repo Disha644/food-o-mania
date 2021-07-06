@@ -8,6 +8,13 @@ export const setUserData = (data) => {
     }
 }
 
+export const setUserPhoto = (data) => {
+    return {
+        type: actionTypes.SET_USER_PHOTO,
+        data: data
+    }
+}
+
 export const getUserData = (userId) => {
     return dispatch => {
 
@@ -15,7 +22,6 @@ export const getUserData = (userId) => {
             .then(res => {
                 let udata;
                 res.forEach(doc => {
-                    console.log(doc.id, doc.data().name);
                     udata = doc.data();
                 })
                 dispatch(setUserData(udata))
@@ -37,9 +43,20 @@ export const updateImage = (image, userId) => {
                     .child(image.name)
                     .getDownloadURL()
                     .then(url => {
-                        firestore.collection('users').where('userId', '==', userId).put({
-                            profilePic: url
-                        }).then(res => console.log(res))
+                        firestore.collection('users').where('userId', '==', userId)
+                        .get()
+                        .then(res => {
+                            res.forEach( doc => {
+                                doc.ref.update({
+                                    profilePic: url
+                                }).then(res => {
+                                    dispatch(setUserPhoto(userId))
+                                })
+                            })
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err);
                     })
             });
     }
