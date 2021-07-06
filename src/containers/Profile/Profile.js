@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-// import 'react-tabs/style/react-tabs.css';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AppBar from "@material-ui/core/AppBar";
 
 import updatePic from '../../assets/new_upload.png'
 import Spinner from '../../components/Spinner/Spinner';
+import TabPanel, { a11yProps, useStyles } from './TabPanel/TabPanel';
 import { getUserData, updateImage } from '../../store/actions/index';
 import classes from './Profile.css';
-
 
 const Profile = (props) => {
 
@@ -15,9 +16,8 @@ const Profile = (props) => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.profile.userData);
     const userId = useSelector(state => state.auth.userId);
-
-
-    
+    const [value, setValue] = useState(0);
+    const tabStyles = useStyles();
 
     useEffect(() => {
         dispatch(getUserData(userId));
@@ -25,6 +25,10 @@ const Profile = (props) => {
 
     const uploadImage = (image, userId) => {
         dispatch(updateImage(image, userId));
+    }
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     }
 
     return (
@@ -47,6 +51,27 @@ const Profile = (props) => {
                             <h1>{userData.name}</h1>
                             <p>{userData.email}</p>
                         </div>
+                    </div>
+
+                    <div className={tabStyles.root}>
+                        <AppBar position="static" color="default">
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                variant="fullWidth"
+                                indicatorColor="primary"
+                                textColor="primary"
+                            >
+                                <Tab label="Item One" {...a11yProps(0)} />
+                                <Tab label="Item Two" {...a11yProps(1)} />
+                            </Tabs>
+                        </AppBar>
+                        <TabPanel value={value} index={0}>
+                            Item One
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            Item Two
+                        </TabPanel>
                     </div>
                 </>
             ) : <Spinner />}
