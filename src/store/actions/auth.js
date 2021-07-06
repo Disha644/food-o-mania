@@ -44,7 +44,7 @@ export const signUp = (name, email, password) => {
                     userId: uid,
                     name: name,
                     email: email,
-                    profilePic: 'https://res.cloudinary.com/disha644/image/upload/v1625313063/food-o-mania/profilePic_e71cbz.png'
+                    profilePic: 'https://firebasestorage.googleapis.com/v0/b/food-o-mania.appspot.com/o/images%2FprofilePic.png?alt=media&token=a8a2452b-672d-4bbe-a9cf-9f445a8ffd62'
                 })
                     .then((res) => {
                         dispatch(authSuccess());
