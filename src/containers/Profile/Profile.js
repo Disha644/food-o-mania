@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import 'react-tabs/style/react-tabs.css';
 
 // import Modal from '../../components/Modal/Modal';
 // import Button from '../../components/Button/Button';
@@ -8,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import FoodCard from '../../components/FoodCard/FoodCard';
 // import Background from '../../assets/mealPlannerBackground.png';
 import { getUserData } from '../../store/actions/index';
-import classes from './Profile.css';
+// import classes from './Profile.css';
 
 
 const Profile = (props) => {
@@ -16,24 +18,28 @@ const Profile = (props) => {
     const userData = useSelector(state => state.profile.userData)
     const userId = useSelector(state => state.auth.userId)
 
+
+    
+
     useEffect(() => {
         dispatch(getUserData(userId));
     },[dispatch,userId])
     return (
-        <div className={classes.Profile}>
-            <h1>Name : {userData.name}</h1>
-            <h1>Email : {userData.email}</h1>
-            {/* <div className={classes.Slider}>
-                <section>
-                    <h1 >My Meals</h1>
-                </section>
-                <section>
-                    <h1>Add a Post</h1>
-                </section>
-                <section>
-                    <h1>View Posts</h1>
-                </section>
-            </div>     */}
+        <div >
+            <h1>Name : {userData}</h1>
+            <Tabs>
+                <TabList>
+                <Tab>Title 1</Tab>
+                <Tab>Title 2</Tab>
+                </TabList>
+
+                <TabPanel>
+                <h2>Any content 1</h2>
+                </TabPanel>
+                <TabPanel>
+                <h2>Any content 2</h2>
+                </TabPanel>
+            </Tabs>
         </div>
     );
 }
