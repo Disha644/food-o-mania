@@ -7,7 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import updatePic from '../../assets/new_upload.png'
 import Spinner from '../../components/Spinner/Spinner';
 import TabPanel, { a11yProps, useStyles } from './TabPanel/TabPanel';
-import { getUserData, updateImage } from '../../store/actions/index';
+import { getUserData, updateImage, getUserDiet } from '../../store/actions/index';
 import classes from './Profile.css';
 
 const Profile = (props) => {
@@ -16,11 +16,13 @@ const Profile = (props) => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.profile.userData);
     const userId = useSelector(state => state.auth.userId);
+    const userDiet = useSelector(state => state.profile.userDiet)
     const [value, setValue] = useState(0);
     const tabStyles = useStyles();
 
     useEffect(() => {
         dispatch(getUserData(userId));
+        dispatch(getUserDiet(userId));
     }, [dispatch, userId])
 
     const uploadImage = (image, userId) => {
@@ -62,32 +64,36 @@ const Profile = (props) => {
                                 indicatorColor="primary"
                                 textColor="primary"
                             >
-                                <Tab label="Item One" {...a11yProps(0)} />
-                                <Tab label="Item Two" {...a11yProps(1)} />
+                                <Tab label="My Meal" {...a11yProps(0)}/>
+                                <Tab label="Posts" {...a11yProps(1)} />
                             </Tabs>
                         </AppBar>
-                        <TabPanel value={value} index={0}>
-                            Item One
+                        <TabPanel value={value} index={0} >
+                            {
+                                userDiet.length > 0 ?
+                                    <>
+                                        {userDiet.map( meals => 
+                                        <ul key={meals.id}>
+                                            {
+                                                meals.data().meals.map(meal => 
+                                                <div key={meal.id}>
+                                                <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType}
+                                                style={{width:'5%',height:'5%'}}
+                                                alt="recipe_image" />
+                                                <li >{meal.title}</li>
+                                                </div>)
+                                            }
+                                        </ul>)} 
+                                    </>:
+                                <p>You Don't Have Any Saved Diets.</p>
+                            }
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                            Item Two
+                            Posts
                         </TabPanel>
                     </div>
                 </>
             ) : <Spinner />}
-            <Tabs>
-                <TabList>
-                <Tab>Title 1</Tab>
-                <Tab>Title 2</Tab>
-                </TabList>
-
-                <TabPanel>
-                <h2>Any content 1</h2>
-                </TabPanel>
-                <TabPanel>
-                <h2>Any content 2</h2>
-                </TabPanel>
-            </Tabs>
         </div>
     );
 }

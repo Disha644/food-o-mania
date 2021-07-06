@@ -15,6 +15,13 @@ export const setUserPhoto = (data) => {
     }
 }
 
+export const setUserDiet = (data) => {
+    return {
+        type: actionTypes.SET_USER_DIET,
+        data: data
+    }
+}
+
 export const getUserData = (userId) => {
     return dispatch => {
 
@@ -26,6 +33,23 @@ export const getUserData = (userId) => {
                 })
                 dispatch(setUserData(udata))
             })
+    }
+}
+
+export const getUserDiet = (userId) => {
+    return dispatch => {
+
+        firestore.collection('meals')
+        // .where('userId', '==', userId)
+        .get()
+        .then(res => {
+            let dietList = []
+            res.forEach(doc => {
+                dietList.push(doc)
+            })
+            dispatch(setUserDiet(dietList))
+            console.log('success');
+        })
     }
 }
 

@@ -2,7 +2,7 @@ export { getRandomRecipes, complexRecipeSearch, autocompleteRecipes, setSearchVa
 
 export { setDietType, setCalories, setStatus, setLoader, getMealPlan, setMealOfTheDay } from './mealPlanner';
 
-export { getUserData, updateImage } from './profile'
+export { getUserData, updateImage, getUserDiet } from './profile'
 
 export { setIsSignup, signUp, SignIn, logout } from './auth'
 
