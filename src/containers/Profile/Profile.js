@@ -6,6 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 
 import updatePic from '../../assets/new_upload.png'
 import Spinner from '../../components/Spinner/Spinner';
+import MealCard from '../../components/MealCard/MealCard';
 import TabPanel, { a11yProps, useStyles } from './TabPanel/TabPanel';
 import { getUserData, updateImage, getUserDiet } from '../../store/actions/index';
 import classes from './Profile.css';
@@ -69,7 +70,9 @@ const Profile = (props) => {
                             </Tabs>
                         </AppBar>
                         <TabPanel value={value} index={0} >
-                            {
+                            {String(userDiet)}
+                            <MealCard />
+                            {/* {
                                 userDiet.length > 0 ?
                                     <>
                                         {userDiet.map( meals => 
@@ -86,7 +89,7 @@ const Profile = (props) => {
                                         </ul>)} 
                                     </>:
                                 <p>You Don't Have Any Saved Diets.</p>
-                            }
+                            } */}
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             Posts
