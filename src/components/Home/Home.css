@@ -10,7 +10,7 @@
   padding: 20px 20px 45px 20px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
   box-sizing: border-box;
   background: linear-gradient(
@@ -41,7 +41,7 @@
 
 .svg2 {
   width: 30%;
-  min-width: 130px;
+  min-width: 160px;
   align-self: flex-end;
 }
 
@@ -65,6 +65,7 @@
 
 .services li {
   margin: 30px;
+  width: 210px;
   background-color: rgb(144, 125, 145);
   padding: 10px 20px;
   color: white;
@@ -74,15 +75,17 @@
 
 @media (max-width: 600px) {
   .header {
-    padding: 20px 2px 45px 2px;
+    padding: 20px 7px 45px 7px;
+  }
+  .svg1 {
+    display: none;
   }
   .header h1 {
     font-size: 25px;
     margin: 20px 0;
   }
   .header p {
-    font-size: 14.5px;
+    font-size: 16px;
     margin: 8px 1px;
-    text-align: center;
   }
 }

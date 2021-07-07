@@ -63,10 +63,12 @@ const MealPlanner = (props) => {
     }
 
     const modal = <Modal close={closeModalHandler} show={showModal}>
-            <i class="fas fa-times fa-lg"  
-            aria-hidden="true" 
-            style={{ position: 'absolute', right: 5, top: 10}} 
+
+        <i class="fas fa-times fa-lg"
+            aria-hidden="true"
+            style={{ position: 'absolute', right: 5, top: 10 }}
             onClick={closeModalHandler}></i>
+
         {!saveLoader ? [
             saveStatus === 'failed' ?
                 <p style={{ color: 'red' }}>Failed To Save Into Database!!</p> :
@@ -77,7 +79,7 @@ const MealPlanner = (props) => {
 
                         <Input type="text" placeholder="Name" changed={setMealTitleHandler} />
                         <Input type="date" changed={setMealDayHandler} />
-                        <div className={classes.List}>
+                        <div className={classes.List} style={{ width: '100%' }}>
                             {meals.map(meal => (
                                 <div key={meal.id} className={classes.meal}>
                                     <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType}
