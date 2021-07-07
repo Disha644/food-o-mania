@@ -34,3 +34,5 @@ export const FETCH_VIEWED_RECIPE_FAILED = 'FETCH_VIEWED_RECIPE_FAILED';
 /*actions for profile reducer*/
 export const SET_USER_DATA = 'SET_USER_DATA'
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
+export const SET_USER_PHOTO = 'SET_USER_PHOTO';
+export const SET_USER_DIET = 'SET_USER_DIET';

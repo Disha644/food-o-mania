@@ -1,0 +1,58 @@
+.Container {
+    position: realtive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+.Card {
+    position: relative;
+    max-width: 300px;
+    height: 180px;
+    background: #fff;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #16384c;
+    transition: 0.3s ease-in-out;
+}
+
+.Card:hover {
+    height: 350px;
+}
+
+.ImgBx {
+    position: relative;
+    width: 260px;
+    height: 300px;
+    top: -60px;
+    z-index: 1;
+}
+
+.ImgBx img {
+    width: 200px;
+    height: 200px;
+}
+.Content {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color:#111;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.Card:hover .Content {
+    
+    visibility: visible;
+    opacity: 1;
+    margin-top: -40px;
+    transition-delay: 0.3s;
+}
+
