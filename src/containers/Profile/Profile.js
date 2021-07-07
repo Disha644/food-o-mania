@@ -24,7 +24,7 @@ const Profile = (props) => {
     useEffect(() => {
         dispatch(getUserData(userId));
         dispatch(getUserDiet(userId));
-    }, [dispatch, userId])
+    }, [dispatch, userId, userData])
 
     const uploadImage = (image, userId) => {
         dispatch(updateImage(image, userId));
