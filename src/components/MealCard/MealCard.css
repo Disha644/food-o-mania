@@ -15,9 +15,10 @@
     padding: 20px 15px;
     display: flex;
     flex-direction: column;
-    box-shadow: 10px 5px 5px #16384c;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #16384c;
     transition: 0.3s ease-in-out;
-    border-radius: 2%;
 }
 
 .Card:hover {
@@ -35,7 +36,6 @@
 .ImgBx img {
     width: 200px;
     height: 200px;
-    border-radius: 5%;
 }
 .Content {
     position: relative;

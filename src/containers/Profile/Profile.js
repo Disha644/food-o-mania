@@ -72,6 +72,7 @@ const Profile = (props) => {
                         <TabPanel value={value} index={0} >
                             {String(userDiet)}
                             <MealCard />
+                            <MealCard />
                             {/* {
                                 userDiet.length > 0 ?
                                     <>
