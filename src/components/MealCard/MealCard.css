@@ -1,58 +1,82 @@
-.Container {
-    position: realtive;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 30px;
-}
-.Card {
-    position: relative;
-    max-width: 300px;
-    height: 180px;
-    background: #fff;
-    margin: 30px 10px;
-    padding: 20px 15px;
-    display: flex;
-    flex-direction: column;
-    border-bottom: solid;
-    border-width: 2px;
-    border-color: #16384c;
-    transition: 0.3s ease-in-out;
+.MealCard {
+  margin: 20px auto;
+  padding: 0px 20px 20px 20px;
+  width: 100%;
+  max-width: 700px;
+  border: 1px solid rgb(221, 221, 221);
+  box-shadow: 2px 3px 2px rgb(226, 226, 226);
+  color: rgb(78, 77, 77);
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
-.Card:hover {
-    height: 350px;
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0px 10px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(87, 126, 114);
 }
 
-.ImgBx {
-    position: relative;
-    width: 260px;
-    height: 300px;
-    top: -60px;
-    z-index: 1;
+.diet {
+  display: flex;
+  flex-direction: column;
 }
 
-.ImgBx img {
-    width: 200px;
-    height: 200px;
-}
-.Content {
-    position: relative;
-    margin-top: -140px;
-    padding: 10px 15px;
-    text-align: center;
-    color:#111;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s ease-in-out;
+.meal {
+  width: 100%;
+  margin: 0 0 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.Card:hover .Content {
-    
-    visibility: visible;
-    opacity: 1;
-    margin-top: -40px;
-    transition-delay: 0.3s;
+.meal img {
+  width: 25%;
+  min-width: 120px;
+  border-radius: 4px;
+  margin-right: 70px;
+  box-sizing: border-box;
 }
 
+.mealInfo {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  color: rgb(110, 110, 110);
+  font-size: 15px;
+  text-align: left;
+}
+
+.mealInfo p {
+  margin: 0;
+}
+
+.mealInfo a {
+  text-decoration: none;
+  color: rgb(250, 91, 91);
+  margin: 0;
+}
+
+.mealInfo a:hover {
+  color: rgb(250, 153, 142);
+}
+
+@media (max-width: 550px) {
+  .title {
+    font-size: 16.5px;
+  }
+  .MealCard {
+    padding: 0px 10px 10px 10px;
+  }
+  .meal img {
+    margin-right: 15px;
+  }
+  .mealInfo {
+    font-size: 13px;
+  }
+}

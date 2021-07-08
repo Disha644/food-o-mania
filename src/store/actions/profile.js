@@ -31,7 +31,7 @@ export const getUserData = (userId) => {
                 res.forEach(doc => {
                     udata = doc.data();
                 })
-                dispatch(setUserData(udata))
+                dispatch(setUserData(udata));
             })
     }
 }
@@ -40,16 +40,15 @@ export const getUserDiet = (userId) => {
     return dispatch => {
 
         firestore.collection('meals')
-        // .where('userId', '==', userId)
-        .get()
-        .then(res => {
-            let dietList = []
-            res.forEach(doc => {
-                dietList.push(doc)
+            .where('userId', '==', userId)
+            .get()
+            .then(res => {
+                let dietList = []
+                res.forEach(doc => {
+                    dietList.push(doc)
+                })
+                dispatch(setUserDiet(dietList))
             })
-            dispatch(setUserDiet(dietList))
-            console.log('success');
-        })
     }
 }
 
@@ -68,16 +67,17 @@ export const updateImage = (image, userId) => {
                     .getDownloadURL()
                     .then(url => {
                         firestore.collection('users').where('userId', '==', userId)
-                        .get()
-                        .then(res => {
-                            res.forEach( doc => {
-                                doc.ref.update({
-                                    profilePic: url
-                                }).then(res => {
-                                    dispatch(setUserPhoto(userId))
+                            .orderBy("timestamp", "desc")
+                            .get()
+                            .then(res => {
+                                res.forEach(doc => {
+                                    doc.ref.update({
+                                        profilePic: url
+                                    }).then(res => {
+                                        dispatch(setUserPhoto(url))
+                                    })
                                 })
                             })
-                        })
                     })
                     .catch(err => {
                         console.log(err);

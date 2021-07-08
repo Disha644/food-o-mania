@@ -11,6 +11,7 @@ import { getMealPlan, setCalories, setStatus, setLoader, setDietType, setMealOfT
 import classes from './MealPlanner.css';
 
 
+
 const MealPlanner = (props) => {
 
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const MealPlanner = (props) => {
     const dietType = useSelector(state => state.mealPlanner.dietType);
     const saveLoader = useSelector(state => state.mealPlanner.saveLoader);
     const saveStatus = useSelector(state => state.mealPlanner.saveStatus);
-    const userId = useSelector(state => state.auth.userId)
+    const userId = useSelector(state => state.auth.userId);
 
     const setCaloriesHandler = (event) => {
         dispatch(setCalories(event.target.value));
@@ -64,7 +65,7 @@ const MealPlanner = (props) => {
 
     const modal = <Modal close={closeModalHandler} show={showModal}>
 
-        <i class="fas fa-times fa-lg"
+        <i className="fas fa-times fa-lg"
             aria-hidden="true"
             style={{ position: 'absolute', right: 5, top: 10 }}
             onClick={closeModalHandler}></i>
@@ -76,7 +77,6 @@ const MealPlanner = (props) => {
                     <p style={{ color: 'green' }}>Saved Into Database!!</p> :
 
                     <div className={classes.modalContent}>
-
                         <Input type="text" placeholder="Name" changed={setMealTitleHandler} />
                         <Input type="date" changed={setMealDayHandler} />
                         <div className={classes.List} style={{ width: '100%' }}>
@@ -88,10 +88,11 @@ const MealPlanner = (props) => {
                                 </div>
                             ))}
                         </div>
-                        <Button name="Save"
+                        <Button
+                            name='Save'
+                            disabled={mealTitle === '' || mealDay === ''}
                             clicked={() => setMeal(userId, meals, mealTitle, mealDay)}
                         />
-
                     </div>]]
 
             : <Spinner />}
@@ -110,15 +111,15 @@ const MealPlanner = (props) => {
             <div style={{ color: 'rgb(92, 88, 88)', marginTop: '20px' }}>
                 <h5>Nutrients content in your diet</h5>
                 <ul>
-                    <li>Fat: {Math.floor(nutrients.fat)} g</li>
-                    <li>Protein: {Math.floor(nutrients.protein)} g</li>
-                    <li>Calories: {Math.floor(nutrients.calories)} cals</li>
-                    <li>Carbs: {Math.floor(nutrients.carbohydrates)} g</li>
+                    <li key="fat">Fat: {Math.floor(nutrients.fat)} g</li>
+                    <li key="protien">Protein: {Math.floor(nutrients.protein)} g</li>
+                    <li key="calories">Calories: {Math.floor(nutrients.calories)} cals</li>
+                    <li key="carbs">Carbs: {Math.floor(nutrients.carbohydrates)} g</li>
                 </ul>
                 <div className={classes.List}>
                     {meals.map(meal => <FoodCard key={meal.id} recipe={meal} />)}
                 </div>
-            </div>
+            </div >
         )
     }
 

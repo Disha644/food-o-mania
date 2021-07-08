@@ -1,8 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 import axios from '../../spoonacular-data-axios';
 import { firestore } from '../../firebase';
+import firebase from 'firebase';
 
 const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
+
 
 export const setCalories = (calories) => {
     return {
@@ -97,7 +99,8 @@ export const setMealOfTheDay = (userId, meals, mealTitle, mealDay) => {
             userId: userId,
             mealTitle: mealTitle,
             mealDay: mealDay,
-            meals: meals
+            meals: meals,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(res => {
             dispatch(saveDietSuccess('success'))
         }).catch(err => {
