@@ -10,7 +10,7 @@ import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Recipe from './containers/Recipe/Recipe';
 import Home from './components/Home/Home';
-import AboutUs from './components/AboutUs/AboutUs';
+import AddPost from './containers/AddPost/AddPost';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           <Route path='/recipe/:id/:url' component={Recipe} />
           <Route path='/search' exact component={RecipeList} />
           <Route path='/profile' component={Profile} />
-          <Route path='/about-us' component={AboutUs} />
+          <Route path='/add-a-post' component={AddPost} />
           <Route path='/' component={Home} />
           <Redirect to='/' />
         </Switch>

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef,useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AppBar from "@material-ui/core/AppBar";
@@ -15,12 +16,12 @@ const Profile = (props) => {
 
     const hiddenImageInput = useRef(null);
     const dispatch = useDispatch();
-    const userData = useSelector(state => state.profile.userData);
+    let userData = useSelector(state => state.profile.userData);
     const userId = useSelector(state => state.auth.userId);
     const userDiet = useSelector(state => state.profile.userDiet)
     const [value, setValue] = useState(0);
     const tabStyles = useStyles();
-
+    
     useEffect(() => {
         dispatch(getUserData(userId));
         dispatch(getUserDiet(userId));
@@ -66,6 +67,10 @@ const Profile = (props) => {
                         <div>
                             <h1>{userData.name}</h1>
                             <p>{userData.email}</p>
+                        </div>
+                        <div>
+                            <h1>Add A Post</h1>
+                            <Link to='/add-a-post'> Click Here</Link>
                         </div>
                     </div>
 
