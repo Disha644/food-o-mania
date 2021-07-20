@@ -22,11 +22,10 @@ const Profile = (props) => {
     const [value, setValue] = useState(0);
     const tabStyles = useStyles();
     
-    useEffect (() => {
-        dispatch(getUserData(userId))
-        dispatch(getUserDiet(userId))
-    },[]) // eslint-disable-line react-hooks/exhaustive-deps
-
+    useEffect(() => {
+        dispatch(getUserData(userId));
+        dispatch(getUserDiet(userId));
+    }, [dispatch, userId])
 
     const uploadImage = (image, userId) => {
         dispatch(updateImage(image, userId));
@@ -35,6 +34,19 @@ const Profile = (props) => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     }
+
+    let diets = <p>You don't have any saved meal plans</p>;
+    if (userDiet.length > 0) {
+        diets = userDiet.map(diet =>
+            <MealCard
+                key={diet.id}
+                mealTitle={diet.data().mealTitle}
+                mealDay={diet.data().mealDay}
+                meals={diet.data().meals}
+            />
+        )
+    }
+
 
     return (
         <div className={classes.Profile}>
@@ -71,31 +83,12 @@ const Profile = (props) => {
                                 indicatorColor="primary"
                                 textColor="primary"
                             >
-                                <Tab label="My Meal" {...a11yProps(0)}/>
+                                <Tab label="My Meal" {...a11yProps(0)} />
                                 <Tab label="Posts" {...a11yProps(1)} />
                             </Tabs>
                         </AppBar>
                         <TabPanel value={value} index={0} >
-                            {
-                                userDiet.length > 0 ?
-                                    <>
-                                        {userDiet.map( meals => 
-                                        <ul key={meals.id}>
-                                            {
-                                                meals.data().meals.map(meal => 
-                                                <div key={meal.id}>
-                                                <img src={'https://spoonacular.com/recipeImages/' + meal.id + '-556x370.' + meal.imageType}
-                                                style={{width:'5%',height:'5%'}}
-                                                alt="recipe_image" />
-                                                <li >{meal.title}</li>
-                                                </div>)
-                                            }
-                                        </ul>)} 
-                                    </>:
-                                <p>You Don't Have Any Saved Diets.</p>
-                            }
-                            <MealCard />
-                            <MealCard />
+                            {diets}
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             Posts

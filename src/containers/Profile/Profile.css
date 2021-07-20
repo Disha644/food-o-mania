@@ -71,7 +71,8 @@
   .header h1 {
     font-size: 25px;
   }
-  .header div .h1 .p {
-    display: block;
+  .profilePic {
+    width: 120px;
+    height: 120px;
   }
 }

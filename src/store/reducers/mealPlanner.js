@@ -58,14 +58,14 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SAVE_DIET_SUCCESS:
             return {
                 ...state,
-                saveLoader:false,
-                saveStatus:action.status
+                saveLoader: false,
+                saveStatus: action.status
             }
         case actionTypes.SAVE_DIET_FAILED:
             return {
-                ...state, 
-                saveLoader:false,
-                saveStatus:action.status
+                ...state,
+                saveLoader: false,
+                saveStatus: action.status
             }
         default: return state;
     }

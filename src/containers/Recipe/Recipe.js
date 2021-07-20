@@ -18,8 +18,6 @@ const Recipe = (props) => {
         dispatch(getRecipe(url));
     }, [dispatch, url]);
 
-    console.log(recipe);
-
     return (
         <div className={classes.Recipe}>
             {recipe ? (
