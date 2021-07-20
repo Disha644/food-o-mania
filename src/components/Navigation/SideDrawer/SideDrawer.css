@@ -21,12 +21,6 @@
   border-radius: 5px;
 }
 
-@media (min-width: 500px) {
-  .SideDrawer {
-    display: none;
-  }
-}
-
 .Open {
   transform: translateX(0);
 }

@@ -8,7 +8,13 @@ const Input = (props) => {
         inputClasses.push(classes.Error)
     }
 
-    return <input className={inputClasses.join(' ')} type={props.type} placeholder={props.placeholder} onChange={props.changed} />
+    return <input
+        className={inputClasses.join(' ')}
+        type={props.type}
+        autoComplete={props.autoComplete}
+        placeholder={props.placeholder}
+        onChange={props.changed}
+    />
 }
 
 export default Input;

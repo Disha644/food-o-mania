@@ -1,19 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import NavigationItems from '../NavigationItems/NavigationItems'
 import Menu from '../Menu/Menu';
 import classes from './NavigationBar.css';
 
 const NavigationBar = (props) => {
+
+    const userId = useSelector(state => state.auth.userId);
+
     return (
         <div className={classes.NavigationBar}>
             <Menu clicked={props.open} />
-            <Link to='/'><h3>Food-o-mania</h3></Link>
+            <h3>Food-o-mania</h3>
             <div className={classes.NavigationItems}>
-                <NavigationItems />
+                <NavLink to="/about-us" activeClassName={classes.active}>About Us</NavLink>
+                {userId ?
+                    <NavLink to="/logout" activeClassName={classes.active}>Logout</NavLink> :
+                    <NavLink to="/auth" activeClassName={classes.active}>Login</NavLink>
+                }
             </div>
-        </div>
+        </div >
     );
 }
 

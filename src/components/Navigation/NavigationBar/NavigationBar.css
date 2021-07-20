@@ -16,16 +16,17 @@
   box-shadow: 2px 0px 3px rgb(233, 233, 233);
 }
 
-.NavigationItems {
-  display: none;
+.NavigationBar h3 {
+  margin-left: 3px;
 }
 
-@media (min-width: 500px) {
-  .NavigationBar {
-    justify-content: space-between;
-  }
-  .NavigationItems {
-    display: flex;
-    flex-direction: row;
-  }
+.NavigationItems {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+a:active,
+a.active {
+  color: #5488c0;
 }

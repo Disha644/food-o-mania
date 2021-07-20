@@ -41,6 +41,7 @@ export const getUserDiet = (userId) => {
 
         firestore.collection('meals')
             .where('userId', '==', userId)
+            .orderBy('timestamp', 'desc')
             .get()
             .then(res => {
                 let dietList = []
@@ -67,7 +68,6 @@ export const updateImage = (image, userId) => {
                     .getDownloadURL()
                     .then(url => {
                         firestore.collection('users').where('userId', '==', userId)
-                            .orderBy("timestamp", "desc")
                             .get()
                             .then(res => {
                                 res.forEach(doc => {

@@ -36,7 +36,7 @@ const Auth = (props) => {
         <>
             <form onSubmit={(event) => loginHandler(event, email, password)}>
                 <Input type="text" placeholder="Email" changed={(event) => setEmail(event.target.value)} />
-                <Input type="password" placeholder="Password" changed={(event) => setPassword(event.target.value)} />
+                <Input type="password" placeholder="Password" autoComplete="on" changed={(event) => setPassword(event.target.value)} />
                 <Button type="submit" name="Sign In" />
                 {error ? <p className={classes.error}>{error}</p> : null}
             </form>
@@ -52,7 +52,7 @@ const Auth = (props) => {
 
                     <Input type="text" placeholder="Name" changed={(event) => setName(event.target.value)} />
                     <Input type="text" placeholder="Email" changed={(event) => setEmail(event.target.value)} />
-                    <Input type="password" placeholder="Password" changed={(event) => setPassword(event.target.value)} />
+                    <Input type="password" placeholder="Password" autoComplete="on" changed={(event) => setPassword(event.target.value)} />
                     <Button type="submit" name="Sign Up" />
                     {error ? <p className={classes.error}>{error}</p> : null}
                 </form>

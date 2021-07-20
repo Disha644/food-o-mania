@@ -14,9 +14,3 @@
   background-color: rgb(78, 77, 77);
   border-radius: 1px;
 }
-
-@media (min-width: 500px) {
-  .Menu {
-    display: none;
-  }
-}
