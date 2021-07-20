@@ -63,7 +63,7 @@ const MealPlanner = (props) => {
     }
 
     const modal = <Modal close={closeModalHandler} show={showModal}>
-            <i class="fas fa-times fa-lg"  
+            <i className="fas fa-times fa-lg"  
             aria-hidden="true" 
             style={{ position: 'absolute', right: 5, top: 10}} 
             onClick={closeModalHandler}></i>
@@ -108,8 +108,8 @@ const MealPlanner = (props) => {
             <div style={{ color: 'rgb(92, 88, 88)', marginTop: '20px' }}>
                 <h5>Nutrients content in your diet</h5>
                 <ul>
-                    <li>Fat: {Math.floor(nutrients.fat)} g</li>
-                    <li>Protein: {Math.floor(nutrients.protein)} g</li>
+                    <li >Fat: {Math.floor(nutrients.fat)} g</li>
+                    <li >Protein: {Math.floor(nutrients.protein)} g</li>
                     <li>Calories: {Math.floor(nutrients.calories)} cals</li>
                     <li>Carbs: {Math.floor(nutrients.carbohydrates)} g</li>
                 </ul>

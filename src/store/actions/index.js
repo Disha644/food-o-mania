@@ -6,4 +6,6 @@ export { getUserData, updateImage, getUserDiet } from './profile'
 
 export { setIsSignup, signUp, SignIn, logout } from './auth'
 
+export { savePost } from './addPost'
+
 export { getRecipe } from './directions';

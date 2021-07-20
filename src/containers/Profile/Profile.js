@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef,useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AppBar from "@material-ui/core/AppBar";
@@ -15,16 +16,17 @@ const Profile = (props) => {
 
     const hiddenImageInput = useRef(null);
     const dispatch = useDispatch();
-    const userData = useSelector(state => state.profile.userData);
+    let userData = useSelector(state => state.profile.userData);
     const userId = useSelector(state => state.auth.userId);
     const userDiet = useSelector(state => state.profile.userDiet)
     const [value, setValue] = useState(0);
     const tabStyles = useStyles();
+    
+    useEffect (() => {
+        dispatch(getUserData(userId))
+        dispatch(getUserDiet(userId))
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-        dispatch(getUserData(userId));
-        dispatch(getUserDiet(userId));
-    }, [dispatch, userId, userData])
 
     const uploadImage = (image, userId) => {
         dispatch(updateImage(image, userId));
@@ -54,6 +56,10 @@ const Profile = (props) => {
                             <h1>{userData.name}</h1>
                             <p>{userData.email}</p>
                         </div>
+                        <div>
+                            <h1>Add A Post</h1>
+                            <Link to='/add-a-post'> Click Here</Link>
+                        </div>
                     </div>
 
                     <div className={tabStyles.root}>
@@ -70,10 +76,7 @@ const Profile = (props) => {
                             </Tabs>
                         </AppBar>
                         <TabPanel value={value} index={0} >
-                            {String(userDiet)}
-                            <MealCard />
-                            <MealCard />
-                            {/* {
+                            {
                                 userDiet.length > 0 ?
                                     <>
                                         {userDiet.map( meals => 
@@ -90,7 +93,9 @@ const Profile = (props) => {
                                         </ul>)} 
                                     </>:
                                 <p>You Don't Have Any Saved Diets.</p>
-                            } */}
+                            }
+                            <MealCard />
+                            <MealCard />
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             Posts

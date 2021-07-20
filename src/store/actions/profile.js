@@ -32,6 +32,7 @@ export const getUserData = (userId) => {
                     udata = doc.data();
                 })
                 dispatch(setUserData(udata))
+                console.log('success user');
             })
     }
 }
@@ -40,7 +41,7 @@ export const getUserDiet = (userId) => {
     return dispatch => {
 
         firestore.collection('meals')
-        // .where('userId', '==', userId)
+        .where('userId', '==', userId)
         .get()
         .then(res => {
             let dietList = []
@@ -48,7 +49,7 @@ export const getUserDiet = (userId) => {
                 dietList.push(doc)
             })
             dispatch(setUserDiet(dietList))
-            console.log('success');
+            console.log('success diet');
         })
     }
 }
@@ -74,7 +75,8 @@ export const updateImage = (image, userId) => {
                                 doc.ref.update({
                                     profilePic: url
                                 }).then(res => {
-                                    dispatch(setUserPhoto(userId))
+                                    dispatch(setUserPhoto(url))
+                                    console.log('success photo');
                                 })
                             })
                         })
