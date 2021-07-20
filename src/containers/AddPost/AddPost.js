@@ -9,9 +9,9 @@ import { savePost } from '../../store/actions';
 const AddPost = (props) => {
 
     const dispatch = useDispatch()
-    const userId = useSelector(state=> state.auth.userId)
-    const [title,setTitle] = useState('');
-    const [image,setImage] = useState('');
+    const userId = useSelector(state => state.auth.userId)
+    const [title, setTitle] = useState('');
+    const [image, setImage] = useState('');
     const [content, setContent] = useState('');
 
     const setTitleHandler = (event) => {
@@ -31,25 +31,19 @@ const AddPost = (props) => {
     }
 
     return (
-        <div className={classes}>
-            <label>Title</label> &nbsp;
-            <Input type="text" placeholder="Post Title" changed={setTitleHandler} />
-            <br></br>
-            <br></br>
-            <label>Upload Image</label> &nbsp;
-            <input
-                type="file"
-                name="filename"
-                accept="image/png, image/jpeg"
-                onChange={e =>setImageHandler(e.target.files[0])}
-            />
-            <br></br>
-            <br></br>
-            <label>Content</label> &nbsp;
-            <textarea name='Enter Text Here...' rows='10' cols='50' onChange={e => setContentHandler(e.target.value)}></textarea>
-            <br></br>
-            <br></br>
-            <Button name="Submit" clicked={() => savePostHandler(userId, title, image, content)}/>
+        <div className={classes.AddPost}>
+            <h2>Create Post</h2>
+            <form onSubmit={event => savePostHandler(userId, title, image, content)}>
+                <Input type="text" placeholder="Post Title" changed={setTitleHandler} />
+                <textarea name='Enter Text Here...' rows='4' cols='50' placeholder="Write a caption.." onChange={e => setContentHandler(e.target.value)}></textarea>
+                <input
+                    type="file"
+                    className={classes.inputFile}
+                    accept="image/png, image/jpeg"
+                    onChange={e => setImageHandler(e.target.files[0])}
+                />
+                <Button name="Submit" type="submit" />
+            </form>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../Backdrop/Backdrop';
 import background1 from '../../../assets/SideBar1.jpg';
-import background2 from '../../../assets/Sidebar2.jpg';
+//import background2 from '../../../assets/Sidebar2.jpg';
 import classes from './SideDrawer.css';
 
 const SideBar = (props) => {
@@ -21,7 +21,6 @@ const SideBar = (props) => {
             <div className={attachedClasses.join(' ')} onClick={props.close}>
                 <img src={background1} alt="smootie_bowl" />
                 <NavigationItems />
-                <img src={background2} alt="ice_cream" />
             </div>
         </Fragment>
 
