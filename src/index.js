@@ -13,13 +13,15 @@ import mealPlannerReducer from './store/reducers/mealPlanner';
 import authReducer from './store/reducers/auth';
 import directionsReducer from './store/reducers/directions';
 import ProfileReducer from './store/reducers/profile';
+import AllPostsReducer from './store/reducers/allPosts';
 
 const reducer = combineReducers({
   recipe: recipesReducer,
   mealPlanner: mealPlannerReducer,
   auth: authReducer,
   dir: directionsReducer,
-  profile: ProfileReducer
+  profile: ProfileReducer,
+  allPosts: AllPostsReducer
 })
 
 const store = createStore(reducer, applyMiddleware(thunk));

@@ -1,9 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    userData: '',
-    userDiet:''
+    userData: null,
+    userDiet: [],
+    userPosts: []
 }
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_USER_DATA:
@@ -23,6 +25,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 userDiet: action.data
+            }
+        case actionTypes.SET_USER_POSTS:
+            return {
+                ...state,
+                userPosts: action.posts
             }
         default: return state;
     }

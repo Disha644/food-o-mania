@@ -20,10 +20,10 @@ const NavigationItems = (props) => {
         links = (
             <>
                 <NavLink to="/profile" activeClassName={classes.active}>Profile</NavLink>
-
                 <NavLink to="/search" exact activeClassName={classes.active}>Search Recipes</NavLink>
                 <NavLink to="/meal-planner" activeClassName={classes.active}>Meal Planner</NavLink>
                 <NavLink to="/create-post" activeClassName={classes.active}>Create Post</NavLink>
+                <NavLink to="/community" activeClassName={classes.active}>Meet Community</NavLink>
             </>
         )
     }

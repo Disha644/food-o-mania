@@ -22,6 +22,13 @@ export const setUserDiet = (data) => {
     }
 }
 
+export const setUserPosts = (data) => {
+    return {
+        type: actionTypes.SET_USER_POSTS,
+        posts: data
+    }
+}
+
 export const getUserData = (userId) => {
     return dispatch => {
 
@@ -49,6 +56,23 @@ export const getUserDiet = (userId) => {
                     dietList.push(doc)
                 })
                 dispatch(setUserDiet(dietList))
+            })
+    }
+}
+
+export const getUserPosts = (userId) => {
+    return dispatch => {
+
+        firestore.collection('posts')
+            .where('userId', '==', userId)
+            .orderBy('timestamp', 'desc')
+            .get()
+            .then(res => {
+                let postList = []
+                res.forEach(doc => {
+                    postList.push(doc)
+                })
+                dispatch(setUserPosts(postList))
             })
     }
 }

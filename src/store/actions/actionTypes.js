@@ -36,3 +36,12 @@ export const SET_USER_DATA = 'SET_USER_DATA'
 export const UPDATE_IMAGE = 'UPDATE_IMAGE';
 export const SET_USER_PHOTO = 'SET_USER_PHOTO';
 export const SET_USER_DIET = 'SET_USER_DIET';
+export const SET_USER_POSTS = 'SET_USER_POSTS';
+
+/* actions for all posts reducer */
+export const START_FETCHING = 'START_FETCHING';
+export const SET_POSTS = 'SET_POSTS';
+export const SET_ERROR = 'SET_ERROR';
+
+
+

@@ -11,7 +11,8 @@ import Logout from './containers/Auth/Logout/Logout';
 import Recipe from './containers/Recipe/Recipe';
 import Home from './components/Home/Home';
 import AddPost from './containers/AddPost/AddPost';
-import AboutUs from './components/AboutUs/AboutUs'
+import AboutUs from './components/AboutUs/AboutUs';
+import AllPosts from './containers/AllPosts/AllPosts';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/profile' component={Profile} />
           <Route path='/create-post' component={AddPost} />
           <Route path='/about-us' component={AboutUs} />
+          <Route path='/community' component={AllPosts} />
           <Route path='/' component={Home} />
           <Redirect to='/' />
         </Switch>

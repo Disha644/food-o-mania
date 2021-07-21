@@ -69,9 +69,11 @@ const Auth = (props) => {
     return (
         <>
             {userId ? <Redirect to='/search' /> : null}
-            <div className={classes.Auth}>
-                <h2>Food-o-mania</h2>
-                {form}
+            <div className={classes.FullPage}>
+                <div className={classes.Auth}>
+                    <h2>Food-o-mania</h2>
+                    {form}
+                </div>
             </div>
         </>
     );

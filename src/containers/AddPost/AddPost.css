@@ -1,11 +1,19 @@
+.FullPage {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(245, 245, 245);
+  padding-top: 30px;
+}
+
 .AddPost {
-  margin: 100px auto;
+  margin: auto;
   width: 85%;
   max-width: 400px;
   border: 1px solid rgb(221, 221, 221);
   box-shadow: 2px 3px 2px rgb(226, 226, 226);
   padding: 20px 0;
   color: rgb(78, 77, 77);
+  background-color: white;
 }
 
 .AddPost h2 {
@@ -57,6 +65,7 @@
   cursor: pointer;
   margin-right: 8px;
   border-radius: 2px;
+  outline: none;
 }
 
 .inputFile::file-selector-button {
@@ -71,6 +80,7 @@
   cursor: pointer;
   margin-right: 8px;
   border-radius: 2px;
+  outline: none;
 }
 
 .inputFile::-webkit-file-upload-button:hover {
