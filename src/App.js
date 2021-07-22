@@ -13,6 +13,7 @@ import Home from './components/Home/Home';
 import AddPost from './containers/AddPost/AddPost';
 import AboutUs from './components/AboutUs/AboutUs';
 import AllPosts from './containers/AllPosts/AllPosts';
+import MyPost from './containers/Profile/MyPost/MyPost';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/search' exact component={RecipeList} />
           <Route path='/profile' component={Profile} />
           <Route path='/create-post' component={AddPost} />
+          <Route path='/post/:postId' component={MyPost} />
           <Route path='/about-us' component={AboutUs} />
           <Route path='/community' component={AllPosts} />
           <Route path='/' component={Home} />

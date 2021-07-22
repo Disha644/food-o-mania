@@ -18,8 +18,10 @@ const RecipeList = (props) => {
     const recipes = useSelector(state => state.recipe.recipes);
 
     useEffect(() => {
-        dispatch(getRandomRecipes());
-    }, [dispatch]);
+        if (recipes.length === 0) {
+            dispatch(getRandomRecipes());
+        }
+    }, [dispatch, recipes.length]);
 
     const valueChangeHandler = (event) => {
 

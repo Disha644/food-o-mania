@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Modal from '../../components/Modal/Modal';
@@ -7,10 +7,8 @@ import Input from '../../components/Input/Input';
 import Spinner from '../../components/Spinner/Spinner';
 import FoodCard from '../../components/FoodCard/FoodCard';
 import Background from '../../assets/mealPlannerBackground.png';
-import { getMealPlan, setCalories, setStatus, setLoader, setDietType, setMealOfTheDay } from '../../store/actions/index';
+import { getMealPlan, setCalories, setStatus, setLoader, setDietType, setMealOfTheDay, reset } from '../../store/actions/index';
 import classes from './MealPlanner.css';
-
-
 
 const MealPlanner = (props) => {
 
@@ -27,6 +25,10 @@ const MealPlanner = (props) => {
     const saveLoader = useSelector(state => state.mealPlanner.saveLoader);
     const saveStatus = useSelector(state => state.mealPlanner.saveStatus);
     const userId = useSelector(state => state.auth.userId);
+
+    useEffect(() => {
+        dispatch(reset());
+    }, [dispatch]);
 
     const setCaloriesHandler = (event) => {
         dispatch(setCalories(event.target.value));
@@ -74,7 +76,7 @@ const MealPlanner = (props) => {
             saveStatus === 'failed' ?
                 <p style={{ color: 'red' }}>Failed To Save Into Database!!</p> :
                 [saveStatus === 'success' ?
-                    <p style={{ color: 'green' }}>Saved Into Database!!</p> :
+                    <p style={{ color: 'green' }}>Saved Into Database. Go to profile to check all your meals</p> :
 
                     <div className={classes.modalContent}>
                         <Input type="text" placeholder="Name" changed={setMealTitleHandler} />

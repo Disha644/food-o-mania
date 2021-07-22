@@ -13,6 +13,17 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
 
+        case actionTypes.RESET_MEAL_PLANNER:
+            return {
+                ...state,
+                meals: [],
+                nutrients: '',
+                loading: false,
+                saveLoader: false,
+                saveStatus: '',
+                calories: 0,
+                dietType: ''
+            }
         case actionTypes.SET_CALORIES:
             return {
                 ...state,

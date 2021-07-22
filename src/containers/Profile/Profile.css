@@ -82,6 +82,7 @@
   width: 100%;
   padding-top: 100%;
   position: relative;
+  cursor: pointer;
 }
 
 .grid_image img {

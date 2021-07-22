@@ -6,6 +6,7 @@ export const FETCH_RECIPES_FAILED = 'FETCH_RECIPES_FAILED';
 
 
 /*actions for meal planner reducer*/
+export const RESET_MEAL_PLANNER = 'RESET_MEAL_PLANNER';
 export const SET_CALORIES = 'SET_CALORIES';
 export const SET_DIET_TYPE = 'SET_DIET_TYPE';
 export const SET_STATUS = 'SET_STATUS';

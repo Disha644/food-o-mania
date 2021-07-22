@@ -1,18 +1,20 @@
 import React, { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
-import "@reach/tabs/styles.css";
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@reach/tabs';
+import './Tabs.css';
 
-import updatePic from '../../assets/new_upload.png'
+import updatePic from '../../assets/new_upload.png';
 import Spinner from '../../components/Spinner/Spinner';
 import MealCard from '../../components/MealCard/MealCard';
 import { getUserData, updateImage, getUserDiet, getUserPosts } from '../../store/actions/index';
 import classes from './Profile.css';
+import { useHistory } from 'react-router';
 
 const Profile = (props) => {
 
     const hiddenImageInput = useRef(null);
     const dispatch = useDispatch();
+    const history = useHistory();
     const userData = useSelector(state => state.profile.userData);
     const userId = useSelector(state => state.auth.userId);
     const userDiet = useSelector(state => state.profile.userDiet);
@@ -28,6 +30,9 @@ const Profile = (props) => {
         dispatch(updateImage(image, userId));
     }
 
+    const openPost = (postId) => {
+        history.push('/post/' + postId)
+    }
 
     let diets = <p style={{ color: 'gray' }}>You don't have any saved meal plans</p>
     if (userDiet.length > 0) {
@@ -47,7 +52,7 @@ const Profile = (props) => {
             <div style={{ width: '100%', maxWidth: '960px', margin: 'auto' }}>
                 <div className={classes.gallery}>
                     {userPosts.map(post =>
-                        <div className={classes.grid_image}>
+                        <div className={classes.grid_image} key={post.id} onClick={() => openPost(post.id)}>
                             <img src={post.data().imageURL} alt="my_post" />
                         </div>
                     )}
@@ -55,8 +60,6 @@ const Profile = (props) => {
             </div>
         )
     }
-
-    console.log(userPosts);
 
     return (
         <div className={classes.FullPage}>

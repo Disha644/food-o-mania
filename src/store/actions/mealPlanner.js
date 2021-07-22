@@ -5,6 +5,11 @@ import { firestore } from '../../firebase';
 
 const API_KEY = '1e37a1ef70934d5884e2cea1bfb5fa9f';
 
+export const reset = () => {
+    return {
+        type: actionTypes.RESET_MEAL_PLANNER
+    }
+}
 
 export const setCalories = (calories) => {
     return {
