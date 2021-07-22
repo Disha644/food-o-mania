@@ -59,7 +59,7 @@ const Profile = (props) => {
                     {userPosts.map(post =>
                         <div className={classes.grid_image} key={post.id} onClick={() => openPost(post.id)}>
                             <img src={post.data().imageURL} alt="my_post" />
-                            <i class="fa fa-trash" aria-hidden="true" onClick={() => deletePost(post.id, userId)}></i>
+                            {/*<i class="fa fa-trash" aria-hidden="true" onClick={() => deletePost(post.id, userId)}></i>*/}
                         </div>
                     )}
                 </div>

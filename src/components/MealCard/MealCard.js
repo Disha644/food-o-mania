@@ -1,14 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import {deleteUserDiet} from '../../store/actions/index' 
+import { deleteUserDiet } from '../../store/actions/index'
 import classes from './MealCard.css';
 
 const MealCard = (props) => {
 
     const dispatch = useDispatch()
-    const userId = useSelector(state=> state.auth.userId)
+    const userId = useSelector(state => state.auth.userId)
     const deleteDiet = (dietId, userId) => {
         dispatch(deleteUserDiet(dietId, userId))
     }
