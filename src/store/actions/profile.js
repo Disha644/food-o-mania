@@ -109,3 +109,27 @@ export const updateImage = (image, userId) => {
             });
     }
 }
+export const deleteUserDiet = (dietId, userId) => {
+    return dispatch => {
+        firestore.collection('meals').doc(dietId).delete()
+        .then((res) =>{
+            console.log('success')
+            dispatch(getUserDiet(userId))
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+}
+export const deleteUserPost = (postId, userId) => {
+    return dispatch =>{
+        firestore.collection('posts').doc(postId).delete()
+        .then(res =>{
+            console.log('success')
+            dispatch(getUserPosts(userId))
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+}
