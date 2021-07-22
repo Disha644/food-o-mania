@@ -23,6 +23,7 @@ const MyPost = props => {
             content={post.content}
             imageUrl={post.imageURL}
             userId={post.userId}
+            postId={postId}
         />
     }
 
