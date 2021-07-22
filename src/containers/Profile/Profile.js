@@ -6,7 +6,7 @@ import "@reach/tabs/styles.css";
 import updatePic from '../../assets/new_upload.png'
 import Spinner from '../../components/Spinner/Spinner';
 import MealCard from '../../components/MealCard/MealCard';
-import { getUserData, updateImage, getUserDiet, getUserPosts } from '../../store/actions/index';
+import { getUserData, updateImage, getUserDiet, getUserPosts, deleteUserPost } from '../../store/actions/index';
 import classes from './Profile.css';
 
 const Profile = (props) => {
@@ -28,12 +28,16 @@ const Profile = (props) => {
         dispatch(updateImage(image, userId));
     }
 
+    const deletePost = (postId, userId) => {
+        dispatch(deleteUserPost(postId, userId))
+    }
 
     let diets = <p style={{ color: 'gray' }}>You don't have any saved meal plans</p>
     if (userDiet.length > 0) {
         diets = userDiet.map(diet =>
             <MealCard
                 key={diet.id}
+                id={diet.id}
                 mealTitle={diet.data().mealTitle}
                 mealDay={diet.data().mealDay}
                 meals={diet.data().meals}
@@ -49,6 +53,7 @@ const Profile = (props) => {
                     {userPosts.map(post =>
                         <div className={classes.grid_image}>
                             <img src={post.data().imageURL} alt="my_post" />
+                            <i class="fa fa-trash" aria-hidden="true" onClick={() => deletePost(post.id, userId)}></i>
                         </div>
                     )}
                 </div>
