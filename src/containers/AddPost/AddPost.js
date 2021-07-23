@@ -55,7 +55,8 @@ const AddPost = (props) => {
                             title: title,
                             imageURL: url,
                             content: content,
-                            timestamp: new Date()
+                            timestamp: new Date(),
+                            likes: []
                         }).then(() => {
                             setLoading(false);
                             history.push('/community');

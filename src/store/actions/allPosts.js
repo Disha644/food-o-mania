@@ -1,5 +1,6 @@
-import * as actionTypes from './actionTypes';
+import firebase from 'firebase/app';
 import { firestore } from '../../firebase';
+import * as actionTypes from './actionTypes';
 
 export const startFetch = () => {
     return {
@@ -36,3 +37,24 @@ export const fetchPosts = () => {
             .catch(err => setError(err));
     }
 }
+
+export const likePost = (postId, userId) => {
+    return dispatch => {
+
+        firestore.collection('posts').doc(postId).update({
+            likes: firebase.firestore.FieldValue.arrayUnion(userId)
+        }).then(res => dispatch(fetchPosts()));
+
+    }
+}
+
+export const unlikePost = (postId, userId) => {
+    return dispatch => {
+
+        firestore.collection('posts').doc(postId).update({
+            likes: firebase.firestore.FieldValue.arrayRemove(userId)
+        }).then(res => dispatch(fetchPosts()));
+
+    }
+}
+

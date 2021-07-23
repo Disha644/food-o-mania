@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import Post from '../../../components/Post/Post';
+import Post from '../../Post/Post';
 import { firestore } from '../../../firebase';
 import classes from './MyPost.css';
 
@@ -13,7 +13,7 @@ const MyPost = props => {
     useEffect(() => {
         firestore.collection('posts').doc(postId).get()
             .then(res => setPost(res.data()));
-    }, [postId]);
+    });
 
 
     let output = null;
@@ -23,6 +23,7 @@ const MyPost = props => {
             content={post.content}
             imageUrl={post.imageURL}
             userId={post.userId}
+            likes={post.likes}
             postId={postId}
         />
     }
