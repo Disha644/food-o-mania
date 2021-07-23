@@ -6,7 +6,7 @@ import './Tabs.css';
 import updatePic from '../../assets/new_upload.png';
 import Spinner from '../../components/Spinner/Spinner';
 import MealCard from '../../components/MealCard/MealCard';
-import { getUserData, updateImage, getUserDiet, getUserPosts, deleteUserPost } from '../../store/actions/index';
+import { getUserData, updateImage, getUserDiet, getUserPosts} from '../../store/actions/index';
 import classes from './Profile.css';
 import { useHistory } from 'react-router';
 
@@ -34,10 +34,6 @@ const Profile = (props) => {
         history.push('/post/' + postId)
     }
 
-    const deletePost = (postId, userId) => {
-        dispatch(deleteUserPost(postId, userId))
-    }
-
     let diets = <p style={{ color: 'gray' }}>You don't have any saved meal plans</p>
     if (userDiet.length > 0) {
         diets = userDiet.map(diet =>
@@ -54,12 +50,11 @@ const Profile = (props) => {
     let posts = <p style={{ color: 'gray' }}>Nothing posted yet</p>
     if (userPosts.length > 0) {
         posts = (
-            <div style={{ width: '100%', maxWidth: '960px', margin: 'auto' }}>
+            <div style={{ width: '100%', maxWidth: '820px', margin: 'auto' }}>
                 <div className={classes.gallery}>
                     {userPosts.map(post =>
                         <div className={classes.grid_image} key={post.id} onClick={() => openPost(post.id)}>
                             <img src={post.data().imageURL} alt="my_post" />
-                            {/*<i class="fa fa-trash" aria-hidden="true" onClick={() => deletePost(post.id, userId)}></i>*/}
                         </div>
                     )}
                 </div>
@@ -90,7 +85,7 @@ const Profile = (props) => {
                             </div>
                         </div>
 
-                        <div style={{ width: '100%', maxWidth: '930px', margin: 'auto' }}>
+                        <div style={{ width: '100%', maxWidth: '820px', margin: 'auto' }}>
                             <Tabs>
                                 <TabList>
                                     <Tab>Posts</Tab>

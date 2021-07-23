@@ -36,7 +36,9 @@ const MealCard = (props) => {
                     ))
                 }
             </div>
-            <i class="fa fa-trash" aria-hidden="true" onClick={() => deleteDiet(props.id, userId)}></i>
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
+                <button className={classes.deleteButton} onClick={() => deleteDiet(props.id, userId)}>DELETE</button>
+            </div>
         </div>
     );
 }

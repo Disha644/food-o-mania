@@ -28,6 +28,7 @@ const AllPosts = (props) => {
                 content={post.data().content}
                 imageUrl={post.data().imageURL}
                 userId={post.data().userId}
+                postId={post.id}
             />
         )
     }
