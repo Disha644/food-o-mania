@@ -19,12 +19,12 @@ const Home = (props) => {
 
             <div className={classes.services}>
                 <h1>Our Services</h1>
-                <ul>
-                    <li>Tremendous recipe database</li>
-                    <li>Effective Meal Planner</li>
-                    <li>Supportive Community</li>
-                    <li>Interactive User Interface</li>
-                </ul>
+                <div>
+                    <p>Tremendous recipe database</p>
+                    <p>Effective Meal Planner</p>
+                    <p>Supportive Community</p>
+                    <p>Interactive User Interface</p>
+                </div>
 
             </div>
 
