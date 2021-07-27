@@ -14,25 +14,45 @@ import AddPost from './containers/AddPost/AddPost';
 import AboutUs from './components/AboutUs/AboutUs';
 import AllPosts from './containers/AllPosts/AllPosts';
 import MyPost from './containers/Profile/MyPost/MyPost';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const userId = useSelector(state => state.auth.userId);
+
+  let routes = (
+    <Switch>
+      <Route path='/auth' component={Auth} />
+      <Route path='/recipe/:id/:url' component={Recipe} />
+      <Route path='/search' exact component={RecipeList} />
+      <Route path='/about-us' component={AboutUs} />
+      <Route path='/' component={Home} />
+      <Redirect to='/' />
+    </Switch>
+  );
+
+  if (userId) {
+    routes = (
+      <Switch>
+        <Route path='/auth' component={Auth} />
+        <Route path='/meal-planner' component={MealPlanner} />
+        <Route path='/logout' component={Logout} />
+        <Route path='/recipe/:id/:url' component={Recipe} />
+        <Route path='/search' exact component={RecipeList} />
+        <Route path='/profile' component={Profile} />
+        <Route path='/create-post' component={AddPost} />
+        <Route path='/post/:postId' component={MyPost} />
+        <Route path='/about-us' component={AboutUs} />
+        <Route path='/community' component={AllPosts} />
+        <Redirect to='/' />
+      </Switch>
+    );
+  }
+
   return (
     <div className={classes.App}>
       <Layout>
-        <Switch>
-          <Route path='/meal-planner' component={MealPlanner} />
-          <Route path='/auth' component={Auth} />
-          <Route path='/logout' component={Logout} />
-          <Route path='/recipe/:id/:url' component={Recipe} />
-          <Route path='/search' exact component={RecipeList} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/create-post' component={AddPost} />
-          <Route path='/post/:postId' component={MyPost} />
-          <Route path='/about-us' component={AboutUs} />
-          <Route path='/community' component={AllPosts} />
-          <Route path='/' component={Home} />
-          <Redirect to='/' />
-        </Switch>
+        {routes}
       </Layout>
     </div>
   );

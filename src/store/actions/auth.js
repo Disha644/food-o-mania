@@ -62,7 +62,9 @@ export const SignIn = (email, password) => {
 
         dispatch(authStart());
         auth.signInWithEmailAndPassword(email, password)
-            .then((res) => dispatch(loginSuccess(res.user.uid)))
+            .then((res) => {
+                dispatch(loginSuccess(res.user.uid))
+            })
             .catch(err => dispatch(authFailed(err.message)))
     }
 }

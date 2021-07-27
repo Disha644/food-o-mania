@@ -10,7 +10,7 @@ const AboutUs = (props) => {
         <div className={classes.AboutUs}>
             <div className={classes.header}>
                 <div style={{ backgroundImage: `url(${headerImage})` }} className={classes.Image}></div>
-                <div class={classes.Content}>
+                <div className={classes.Content}>
                     <h2>Welcome to Food-o-mania!!</h2>
                     <p>A safe space for all the foodies and fitness freaks</p>
                     <p>We promote healthy and happy lifestyle</p>
